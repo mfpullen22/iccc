@@ -1,4 +1,6 @@
 import "package:flutter/material.dart";
+import 'package:iccc_app/pages/abstracts_page.dart';
+import 'package:iccc_app/pages/chat_page.dart';
 import 'package:iccc_app/pages/conference_info.dart';
 import 'package:iccc_app/pages/presenters_page.dart';
 import 'package:iccc_app/pages/schedule_page.dart';
@@ -12,7 +14,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("ICCC 2023")),
+      appBar: AppBar(title: const Text("Home")),
       extendBody: true,
       bottomNavigationBar: const BottomNavBarRaisedInsetFb1(),
       body: Center(
@@ -33,9 +35,9 @@ class HomePage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: const [
-                NavCard(route: SchedulePage(), title: "Schedule", widthMod: 0.45),
+                NavCard(route: AbstractsPage(), title: "Abstracts", widthMod: 0.45),
                 SizedBox(width:20),
-                NavCard(route: PresentersPage(), title: "Presenters", widthMod: 0.45),
+                NavCard(route: ChatPage(), title: "Live Chat", widthMod: 0.45),
               ],
             ),
             const SizedBox(height: 20),

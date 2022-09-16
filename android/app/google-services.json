@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "415138711673",
+    "project_id": "iccc-app",
+    "storage_bucket": "iccc-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:415138711673:android:2bda6538875bca9aed2ca8",
+        "android_client_info": {
+          "package_name": "com.example.iccc_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "415138711673-esvgm53lln168ta5chssoem9l5sg797s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCh5DvrzTT2spT131C2sfTxyYRw8UhWIsM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "415138711673-esvgm53lln168ta5chssoem9l5sg797s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,4 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import "package:flutter/material.dart";
+import 'package:flutter_chat_ui/flutter_chat_ui.dart';
+import 'package:flutter_firebase_chat_core/flutter_firebase_chat_core.dart';
 
 class ChatPage extends StatelessWidget {
   const ChatPage({super.key});
@@ -9,7 +12,7 @@ class ChatPage extends StatelessWidget {
       appBar: AppBar(title: const Text("Live Chat")),
       body: Center(
         child: Column(
-          children: const [
+          children: [
             Text("Live Chat Page"),
           ],
         ),

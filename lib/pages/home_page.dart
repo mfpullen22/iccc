@@ -5,10 +5,12 @@ import 'package:iccc_app/pages/chat_page.dart';
 import 'package:iccc_app/pages/conference_info.dart';
 import 'package:iccc_app/pages/presenters_page.dart';
 import 'package:iccc_app/pages/schedule_page.dart';
+//import 'package:iccc_app/pages/set_username.dart';
 import 'package:iccc_app/providers.dart';
 import 'package:iccc_app/widgets/bottom_navbar.dart';
 import 'package:iccc_app/widgets/nav_card.dart';
 import 'package:iccc_app/widgets/top_card.dart';
+import "package:firebase_auth/firebase_auth.dart";
 
 class HomePage extends ConsumerWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -23,7 +25,7 @@ class HomePage extends ConsumerWidget {
               onPressed: () {
                 ref.read(firebaseAuthProvider).signOut();
               },
-              icon: Icon(Icons.logout, color: Colors.white))
+              icon: const Icon(Icons.logout, color: Colors.white))
         ],
       ),
       extendBody: true,

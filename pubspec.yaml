@@ -46,6 +46,7 @@ dependencies:
   google_sign_in: ^5.4.1
   flutter_chat_ui: ^1.6.4
   flutter_firebase_chat_core: ^1.6.3
+  provider: ^6.0.3
 
 dev_dependencies:
   flutter_test:

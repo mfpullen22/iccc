@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iccc_app/pages/select_person_to_chat.dart';
 import "package:iccc_app/providers.dart";
+import 'package:iccc_app/widgets/bottom_navbar.dart';
 
 class ChatPage extends ConsumerStatefulWidget {
   const ChatPage({Key? key}) : super(key: key);
@@ -39,6 +40,10 @@ class _ChatPageState extends ConsumerState<ChatPage>
             Tab(text: "CALLS"),
           ],
         ),
+      ),
+      extendBody: true,
+      bottomNavigationBar: const BottomNavBarFb5(
+        selectedIndex: 4,
       ),
       body: TabBarView(
         controller: _tabController,

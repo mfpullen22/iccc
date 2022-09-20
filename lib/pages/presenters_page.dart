@@ -10,10 +10,13 @@ class PresentersPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: const Text("Presenters"),
       ),
       extendBody: true,
-      bottomNavigationBar: const BottomNavBarRaisedInsetFb1(),
+      bottomNavigationBar: const BottomNavBarFb5(
+        selectedIndex: 2,
+      ),
       body: ListView.builder(
         itemCount: speakers.length,
         itemBuilder: (context, index) {
@@ -27,7 +30,7 @@ class PresentersPage extends StatelessWidget {
               position: speaker["position"],
               email: speaker["email"],
             ),
-            );
+          );
         },
       ),
     );

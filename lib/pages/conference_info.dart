@@ -9,7 +9,7 @@ class ConferenceInfo extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text("Conference Info")),
       extendBody: true,
-      bottomNavigationBar: const BottomNavBarRaisedInsetFb1(),
+      bottomNavigationBar: const BottomNavBarFb5(selectedIndex: 5),
       body: Center(
         child: Column(
           children: const [

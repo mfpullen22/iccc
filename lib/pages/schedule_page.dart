@@ -7,12 +7,14 @@ class SchedulePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Schedule"),
-      ),
-      extendBody: true,
-      bottomNavigationBar: const BottomNavBarRaisedInsetFb1(),
-      body: const Text("Schedule")
-    );
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          title: const Text("Schedule"),
+        ),
+        extendBody: true,
+        bottomNavigationBar: const BottomNavBarFb5(
+          selectedIndex: 1,
+        ),
+        body: const Text("Schedule"));
   }
 }

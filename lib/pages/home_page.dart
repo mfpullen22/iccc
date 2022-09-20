@@ -19,6 +19,7 @@ class HomePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: const Text("Home"),
         actions: [
           IconButton(
@@ -29,7 +30,9 @@ class HomePage extends ConsumerWidget {
         ],
       ),
       extendBody: true,
-      bottomNavigationBar: const BottomNavBarRaisedInsetFb1(),
+      bottomNavigationBar: const BottomNavBarFb5(
+        selectedIndex: 0,
+      ),
       body: Center(
         child: Column(children: [
           const SizedBox(height: 20),

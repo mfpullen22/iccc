@@ -12,9 +12,7 @@ class SchedulePage extends StatelessWidget {
           title: const Text("Schedule"),
         ),
         extendBody: true,
-        bottomNavigationBar: const BottomNavBarFb5(
-          selectedIndex: 1,
-        ),
+        bottomNavigationBar: BottomNavBarFb5(),
         body: const Text("Schedule"));
   }
 }

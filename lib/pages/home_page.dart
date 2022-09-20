@@ -30,9 +30,7 @@ class HomePage extends ConsumerWidget {
         ],
       ),
       extendBody: true,
-      bottomNavigationBar: const BottomNavBarFb5(
-        selectedIndex: 0,
-      ),
+      bottomNavigationBar: BottomNavBarFb5(),
       body: Center(
         child: Column(children: [
           const SizedBox(height: 20),

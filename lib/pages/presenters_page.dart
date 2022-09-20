@@ -14,9 +14,7 @@ class PresentersPage extends StatelessWidget {
         title: const Text("Presenters"),
       ),
       extendBody: true,
-      bottomNavigationBar: const BottomNavBarFb5(
-        selectedIndex: 2,
-      ),
+      bottomNavigationBar: BottomNavBarFb5(),
       body: ListView.builder(
         itemCount: speakers.length,
         itemBuilder: (context, index) {

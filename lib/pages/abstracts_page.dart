@@ -12,9 +12,7 @@ class AbstractsPage extends StatelessWidget {
           title: const Text("Abstracts"),
         ),
         extendBody: true,
-        bottomNavigationBar: const BottomNavBarFb5(
-          selectedIndex: 3,
-        ),
+        bottomNavigationBar: BottomNavBarFb5(),
         body: Center(
           child: Column(
             children: const [

@@ -130,9 +130,7 @@ class SignInPage extends ConsumerWidget {
                                     .signInWithEmailAndPassword(
                                         email: emailController.text,
                                         password: pwdController.text);
-                              } catch (e) {
-                                print(e);
-                              }
+                              } catch (e) {}
                               Navigator.pop(context);
                             },
                           ),

@@ -42,9 +42,7 @@ class _ChatPageState extends ConsumerState<ChatPage>
         ),
       ),
       extendBody: true,
-      bottomNavigationBar: const BottomNavBarFb5(
-        selectedIndex: 4,
-      ),
+      bottomNavigationBar: BottomNavBarFb5(),
       body: TabBarView(
         controller: _tabController,
         children: <Widget>[

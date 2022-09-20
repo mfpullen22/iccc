@@ -22,7 +22,7 @@ class ProfilePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text(name)),
       extendBody: true,
-      bottomNavigationBar: const BottomNavBarFb5(selectedIndex: 2),
+      bottomNavigationBar: BottomNavBarFb5(),
       body: Center(
         child: Column(
           children: [

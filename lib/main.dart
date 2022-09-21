@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iccc_app/firebase_options.dart';
 import 'package:iccc_app/pages/auth/sign_in_page.dart';
-import 'package:iccc_app/pages/nav_home.dart';
+import 'package:iccc_app/pages/home_page.dart';
 import "package:firebase_core/firebase_core.dart";
 import 'package:iccc_app/widgets/auth_widget.dart';
 
@@ -29,7 +29,7 @@ class MyApp extends ConsumerWidget {
         // primarySwatch: Colors.blue,
       ),
       home: AuthWidget(
-        signedInBuilder: (context) => const NavHome(),
+        signedInBuilder: (context) => const HomePage(),
         nonSignedInBuilder: (_) => const SignInPage(),
       ),
     );

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iccc_app/pages/select_person_to_chat.dart';
-import "package:iccc_app/providers.dart";
 import 'package:iccc_app/widgets/bottom_navbar.dart';
+import "package:iccc_app/providers.dart";
 
 class ChatPage extends ConsumerStatefulWidget {
   const ChatPage({Key? key}) : super(key: key);
@@ -14,7 +14,6 @@ class ChatPage extends ConsumerStatefulWidget {
 class _ChatPageState extends ConsumerState<ChatPage>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
-
   @override
   void initState() {
     super.initState();
@@ -25,6 +24,9 @@ class _ChatPageState extends ConsumerState<ChatPage>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: const Text("Conference Chat"),
+        automaticallyImplyLeading: false,
+        elevation: 0.7,
         bottom: TabBar(
           controller: _tabController,
           indicatorColor: Colors.white,
@@ -37,6 +39,39 @@ class _ChatPageState extends ConsumerState<ChatPage>
             Tab(text: "CALLS"),
           ],
         ),
+        actions: <Widget>[
+          const Icon(Icons.search),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 5.0),
+          ),
+          IconButton(
+            icon: const Icon(Icons.more_vert),
+            onPressed: () {
+              // sign out popup
+              showDialog(
+                context: context,
+                builder: (context) => AlertDialog(
+                  title: const Text("Sign out?"),
+                  actions: [
+                    ElevatedButton(
+                      child: const Text("Cancel"),
+                      onPressed: () => Navigator.pop(context),
+                    ),
+                    ElevatedButton(
+                      child: const Text("Sign out"),
+                      onPressed: () async {
+                        await ref
+                            .read(firebaseAuthProvider)
+                            .signOut()
+                            .then((value) => Navigator.pop(context));
+                      },
+                    ),
+                  ],
+                ),
+              );
+            },
+          )
+        ],
       ),
       body: TabBarView(
         controller: _tabController,
@@ -48,7 +83,7 @@ class _ChatPageState extends ConsumerState<ChatPage>
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: const Color.fromRGBO(122, 0, 25, 1),
+        backgroundColor: const Color(0xff25D366),
         child: const Icon(
           Icons.message,
           color: Colors.white,
@@ -57,9 +92,10 @@ class _ChatPageState extends ConsumerState<ChatPage>
             context,
             MaterialPageRoute(
                 builder: (_) =>
-                    SelectPersonToChat()) // change to actual select person page)),
+                    Scaffold()) // change to actual select person page)),
             ),
       ),
+      bottomNavigationBar: const BottomNavBarFb5(pageIndex: 4),
     );
   }
 }
@@ -76,28 +112,3 @@ class OtherTab extends StatelessWidget {
     );
   }
 }
-
-/* import 'package:firebase_auth/firebase_auth.dart';
-import "package:flutter/material.dart";
-import 'package:flutter_chat_ui/flutter_chat_ui.dart';
-import 'package:flutter_firebase_chat_core/flutter_firebase_chat_core.dart';
-
-class ChatPage extends StatelessWidget {
-  const ChatPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final name = FirebaseAuth.instance.currentUser!.displayName;
-    return Scaffold(
-      appBar: AppBar(title: const Text("Live Chat")),
-      body: Center(
-        child: Column(
-          children: [
-            Text("Live Chat Page"),
-            Text(name!),
-          ],
-        ),
-      ),
-    );
-  }
-} */

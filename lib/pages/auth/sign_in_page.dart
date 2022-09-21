@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
+//import 'package:firebase_core/firebase_core.dart';
 import "package:flutter/material.dart";
-import "package:flutterfire_ui/auth.dart";
+//import "package:flutterfire_ui/auth.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import 'package:iccc_app/models/user_data.dart';
 import "package:iccc_app/providers.dart";
@@ -82,6 +82,7 @@ class SignInPage extends ConsumerWidget {
                                           .createUserWithEmailAndPassword(
                                               email: emailController.text,
                                               password: pwdController.text);
+                                      // ignore: empty_catches
                                     } catch (e) {}
                                     final newUser = UserData(
                                         name: nameController.text,
@@ -90,6 +91,7 @@ class SignInPage extends ConsumerWidget {
                                     await ref
                                         .read(databaseProvider)!
                                         .addUser(newUser);
+                                    // ignore: use_build_context_synchronously
                                     Navigator.pop(context);
                                   }
                                 },
@@ -99,7 +101,7 @@ class SignInPage extends ConsumerWidget {
                         );
                       },
                     ),
-                    SizedBox(width: 40),
+                    const SizedBox(width: 40),
                     ElevatedButton(
                       child: const Text("Log In"),
                       onPressed: () async {
@@ -138,7 +140,9 @@ class SignInPage extends ConsumerWidget {
                                         .signInWithEmailAndPassword(
                                             email: emailController.text,
                                             password: pwdController.text);
+                                    // ignore: empty_catches
                                   } catch (e) {}
+                                  // ignore: use_build_context_synchronously
                                   Navigator.pop(context);
                                 },
                               ),

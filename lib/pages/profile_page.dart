@@ -20,9 +20,11 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(title: Text(name)),
+      appBar: AppBar(title: const Text("Profile")),
       extendBody: true,
-      bottomNavigationBar: BottomNavBarFb5(),
+      bottomNavigationBar: const BottomNavBarFb5(
+        pageIndex: 5,
+      ),
       body: Center(
         child: Column(
           children: [

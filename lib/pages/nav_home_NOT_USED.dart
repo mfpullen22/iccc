@@ -1,4 +1,7 @@
-import "package:flutter/material.dart";
+
+// ignore_for_file: file_names
+
+/* import "package:flutter/material.dart";
 //import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iccc_app/pages/abstracts_page.dart';
 import 'package:iccc_app/pages/chat_page.dart';
@@ -27,11 +30,11 @@ class _NavHomeState extends State<NavHome> {
   int _selectedIndex = 0;
 
   final screen = [
-    HomePage(),
-    SchedulePage(),
-    PresentersPage(),
-    AbstractsPage(),
-    ChatPage(),
+    const HomePage(),
+    const SchedulePage(),
+    const PresentersPage(),
+    const AbstractsPage(),
+    const ChatPage(),
   ];
   final titles = [
     "Home",
@@ -122,3 +125,4 @@ class _NavHomeState extends State<NavHome> {
                 },
                 icon: const Icon(Icons.logout, color: Colors.white))
           ], */
+ */

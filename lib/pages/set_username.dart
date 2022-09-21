@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import "package:flutter/material.dart";
 import 'package:iccc_app/models/user_data.dart';
-import 'package:iccc_app/pages/chat_page.dart';
+import 'package:iccc_app/pages/chat_main_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iccc_app/providers.dart';

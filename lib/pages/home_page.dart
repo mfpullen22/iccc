@@ -1,6 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import "package:flutter/material.dart";
 import 'package:iccc_app/pages/abstracts_page.dart';
-import 'package:iccc_app/pages/chat_page.dart';
+import 'package:iccc_app/pages/chat_main_page.dart';
 import 'package:iccc_app/pages/conference_info.dart';
 import 'package:iccc_app/pages/presenters_page.dart';
 import 'package:iccc_app/pages/schedule_page.dart';
@@ -17,6 +18,16 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Home"),
         automaticallyImplyLeading: false,
+        actions: [
+          IconButton(
+              onPressed: () async {
+                final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+                firebaseAuth.signOut();
+                //FirebaseAuth.instance.signOut();
+                //ref.read(firebaseAuthProvider).signOut();
+              },
+              icon: const Icon(Icons.logout, color: Colors.white))
+        ],
       ),
       body: Center(
         child: Column(

@@ -25,9 +25,6 @@ class _ChatPageState extends ConsumerState<ChatPage>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: const Text("Conference Chat"),
-        elevation: 0.7,
         bottom: TabBar(
           controller: _tabController,
           indicatorColor: Colors.white,
@@ -41,8 +38,6 @@ class _ChatPageState extends ConsumerState<ChatPage>
           ],
         ),
       ),
-      extendBody: true,
-      bottomNavigationBar: BottomNavBarFb5(),
       body: TabBarView(
         controller: _tabController,
         children: <Widget>[

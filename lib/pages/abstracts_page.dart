@@ -6,19 +6,12 @@ class AbstractsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          title: const Text("Abstracts"),
-        ),
-        extendBody: true,
-        bottomNavigationBar: BottomNavBarFb5(),
-        body: Center(
-          child: Column(
-            children: const [
-              Text("Abstracts Page"),
-            ],
-          ),
-        ));
+    return Center(
+      child: Column(
+        children: const [
+          Text("Abstracts Page"),
+        ],
+      ),
+    );
   }
 }

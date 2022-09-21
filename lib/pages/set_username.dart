@@ -17,11 +17,7 @@ class SetUsername extends ConsumerWidget {
     final nameController = TextEditingController();
 
     if (user.displayName == null) {
-      return Scaffold(
-        appBar: AppBar(
-          title: Text("Set Username"),
-        ),
-        body: Column(
+      return Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [

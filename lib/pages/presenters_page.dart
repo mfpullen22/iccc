@@ -8,29 +8,21 @@ class PresentersPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: const Text("Presenters"),
-      ),
-      extendBody: true,
-      bottomNavigationBar: BottomNavBarFb5(),
-      body: ListView.builder(
-        itemCount: speakers.length,
-        itemBuilder: (context, index) {
-          final speaker = speakers[index];
-          return Padding(
-            padding: const EdgeInsets.all(8.5),
-            child: SpeakerTile(
-              name: speaker["name"],
-              university: speaker["university"],
-              title: speaker["title"],
-              position: speaker["position"],
-              email: speaker["email"],
-            ),
-          );
-        },
-      ),
+    return ListView.builder(
+      itemCount: speakers.length,
+      itemBuilder: (context, index) {
+        final speaker = speakers[index];
+        return Padding(
+          padding: const EdgeInsets.all(8.5),
+          child: SpeakerTile(
+            name: speaker["name"],
+            university: speaker["university"],
+            title: speaker["title"],
+            position: speaker["position"],
+            email: speaker["email"],
+          ),
+        );
+      },
     );
   }
 }

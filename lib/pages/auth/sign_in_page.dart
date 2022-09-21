@@ -22,122 +22,132 @@ class SignInPage extends ConsumerWidget {
             width: MediaQuery.of(context).size.width,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                // sign in announymsly with firebase
-                const Text("Sign in/Sign Up"),
-                ElevatedButton(
-                  child: const Text("Sign up"),
-                  onPressed: () async {
-                    // pop up asking for name
-                    await showDialog<String>(
-                      context: context,
-                      builder: (context) => AlertDialog(
-                        title: const Text("Sign Up"),
-                        content: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            TextField(
-                              autofocus: true,
-                              controller: nameController,
-                              decoration: const InputDecoration(
-                                labelText: "Name",
-                              ),
-                            ),
-                            TextField(
-                              autofocus: true,
-                              controller: emailController,
-                              decoration: const InputDecoration(
-                                labelText: "Email",
-                              ),
-                            ),
-                            TextField(
-                              autofocus: true,
-                              controller: pwdController,
-                              obscureText: true,
-                              decoration: const InputDecoration(
-                                labelText: "Password",
-                              ),
-                            ),
-                          ],
-                        ),
-                        actions: [
-                          ElevatedButton(
-                            child: const Text("OK"),
-                            onPressed: () async {
-                              if (nameController.text != "") {
-                                try {
-                                  ref
-                                      .read(nameProvider)
-                                      .setName(nameController.text);
-                                  await ref
-                                      .read(firebaseAuthProvider)
-                                      .createUserWithEmailAndPassword(
-                                          email: emailController.text,
-                                          password: pwdController.text);
-                                } catch (e) {}
-                                final newUser = UserData(
-                                    name: nameController.text,
-                                    uid:
-                                        FirebaseAuth.instance.currentUser!.uid);
-                                await ref
-                                    .read(databaseProvider)!
-                                    .addUser(newUser);
-                                Navigator.pop(context);
-                              }
-                            },
-                          ),
-                        ],
-                      ),
-                    );
-                  },
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: AspectRatio(
+                    aspectRatio: 1,
+                    child: Image.asset("assets/img/iccc_logo.webp"),
+                  ),
                 ),
-                ElevatedButton(
-                  child: const Text("Log In"),
-                  onPressed: () async {
-                    // pop up asking for name
-                    await showDialog<String>(
-                      context: context,
-                      builder: (context) => AlertDialog(
-                        title: const Text("Log In"),
-                        content: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            TextField(
-                              autofocus: true,
-                              controller: emailController,
-                              decoration: const InputDecoration(
-                                labelText: "Email",
-                              ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ElevatedButton(
+                      child: const Text("Sign up"),
+                      onPressed: () async {
+                        // pop up asking for name
+                        await showDialog<String>(
+                          context: context,
+                          builder: (context) => AlertDialog(
+                            title: const Text("Sign Up"),
+                            content: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                TextField(
+                                  autofocus: true,
+                                  controller: nameController,
+                                  decoration: const InputDecoration(
+                                    labelText: "Name",
+                                  ),
+                                ),
+                                TextField(
+                                  autofocus: true,
+                                  controller: emailController,
+                                  decoration: const InputDecoration(
+                                    labelText: "Email",
+                                  ),
+                                ),
+                                TextField(
+                                  autofocus: true,
+                                  controller: pwdController,
+                                  obscureText: true,
+                                  decoration: const InputDecoration(
+                                    labelText: "Password",
+                                  ),
+                                ),
+                              ],
                             ),
-                            TextField(
-                              autofocus: true,
-                              controller: pwdController,
-                              obscureText: true,
-                              decoration: const InputDecoration(
-                                labelText: "Password",
+                            actions: [
+                              ElevatedButton(
+                                child: const Text("OK"),
+                                onPressed: () async {
+                                  if (nameController.text != "") {
+                                    try {
+                                      ref
+                                          .read(nameProvider)
+                                          .setName(nameController.text);
+                                      await ref
+                                          .read(firebaseAuthProvider)
+                                          .createUserWithEmailAndPassword(
+                                              email: emailController.text,
+                                              password: pwdController.text);
+                                    } catch (e) {}
+                                    final newUser = UserData(
+                                        name: nameController.text,
+                                        uid: FirebaseAuth
+                                            .instance.currentUser!.uid);
+                                    await ref
+                                        .read(databaseProvider)!
+                                        .addUser(newUser);
+                                    Navigator.pop(context);
+                                  }
+                                },
                               ),
-                            ),
-                          ],
-                        ),
-                        actions: [
-                          ElevatedButton(
-                            child: const Text("OK"),
-                            onPressed: () async {
-                              try {
-                                await ref
-                                    .read(firebaseAuthProvider)
-                                    .signInWithEmailAndPassword(
-                                        email: emailController.text,
-                                        password: pwdController.text);
-                              } catch (e) {}
-                              Navigator.pop(context);
-                            },
+                            ],
                           ),
-                        ],
-                      ),
-                    );
-                  },
+                        );
+                      },
+                    ),
+                    SizedBox(width: 40),
+                    ElevatedButton(
+                      child: const Text("Log In"),
+                      onPressed: () async {
+                        // pop up asking for name
+                        await showDialog<String>(
+                          context: context,
+                          builder: (context) => AlertDialog(
+                            title: const Text("Log In"),
+                            content: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                TextField(
+                                  autofocus: true,
+                                  controller: emailController,
+                                  decoration: const InputDecoration(
+                                    labelText: "Email",
+                                  ),
+                                ),
+                                TextField(
+                                  autofocus: true,
+                                  controller: pwdController,
+                                  obscureText: true,
+                                  decoration: const InputDecoration(
+                                    labelText: "Password",
+                                  ),
+                                ),
+                              ],
+                            ),
+                            actions: [
+                              ElevatedButton(
+                                child: const Text("OK"),
+                                onPressed: () async {
+                                  try {
+                                    await ref
+                                        .read(firebaseAuthProvider)
+                                        .signInWithEmailAndPassword(
+                                            email: emailController.text,
+                                            password: pwdController.text);
+                                  } catch (e) {}
+                                  Navigator.pop(context);
+                                },
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                    ),
+                  ],
                 ),
               ],
             ),

@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import 'package:iccc_app/pages/abstracts_page.dart';
 import 'package:iccc_app/pages/chat_page.dart';
 import 'package:iccc_app/pages/conference_info.dart';
-import 'package:iccc_app/pages/home_page.dart';
+import 'package:iccc_app/pages/nav_home.dart';
 import 'package:iccc_app/pages/presenters_page.dart';
 import 'package:iccc_app/pages/schedule_page.dart';
 import 'package:google_fonts/google_fonts.dart';

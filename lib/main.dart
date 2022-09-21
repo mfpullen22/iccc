@@ -32,6 +32,10 @@ class MyApp extends ConsumerWidget {
         signedInBuilder: (context) => const HomePage(),
         nonSignedInBuilder: (_) => const SignInPage(),
       ),
+      routes: <String, WidgetBuilder>{
+        "/SignIn": (BuildContext context) => SignInPage(),
+        "/Home": (BuildContext context) => HomePage(),
+      },
     );
   }
 }

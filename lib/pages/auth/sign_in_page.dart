@@ -92,7 +92,9 @@ class SignInPage extends ConsumerWidget {
                                         .read(databaseProvider)!
                                         .addUser(newUser);
                                     // ignore: use_build_context_synchronously
-                                    Navigator.pop(context);
+                                    Navigator.of(context)
+                                        .pushNamedAndRemoveUntil('/Home',
+                                            (Route<dynamic> route) => false);
                                   }
                                 },
                               ),
@@ -143,7 +145,8 @@ class SignInPage extends ConsumerWidget {
                                     // ignore: empty_catches
                                   } catch (e) {}
                                   // ignore: use_build_context_synchronously
-                                  Navigator.pop(context);
+                                  Navigator.of(context).pushNamedAndRemoveUntil(
+                                      '/Home', (Route<dynamic> route) => false);
                                 },
                               ),
                             ],

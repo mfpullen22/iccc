@@ -1,4 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
+// ignore_for_file: file_names
+
+/* import 'package:firebase_auth/firebase_auth.dart';
 import "package:flutter/material.dart";
 import 'package:iccc_app/models/user_data.dart';
 import 'package:iccc_app/pages/chat_main_page.dart';
@@ -66,3 +68,4 @@ class SetUsername extends ConsumerWidget {
     }
   }
 }
+ */

@@ -8,25 +8,27 @@ import 'package:iccc_app/pages/schedule_page.dart';
 import 'package:iccc_app/widgets/bottom_navbar.dart';
 import 'package:iccc_app/widgets/nav_card.dart';
 import 'package:iccc_app/widgets/top_card.dart';
+import "package:iccc_app/widgets/sign_out.dart";
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
     return Scaffold(
       appBar: AppBar(
         title: const Text("Home"),
         automaticallyImplyLeading: false,
         actions: [
-          IconButton(
+          SignOut(),
+/*           IconButton(
               onPressed: () async {
-                final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
                 firebaseAuth.signOut();
                 //FirebaseAuth.instance.signOut();
                 //ref.read(firebaseAuthProvider).signOut();
               },
-              icon: const Icon(Icons.logout, color: Colors.white))
+              icon: const Icon(Icons.logout, color: Colors.white)) */
         ],
       ),
       body: Center(
@@ -54,7 +56,8 @@ class HomePage extends StatelessWidget {
                 NavCard(
                     route: AbstractsPage(), title: "Abstracts", widthMod: 0.45),
                 SizedBox(width: 20),
-                NavCard(route: ChatPage(), title: "Live Chat", widthMod: 0.45),
+                NavCard(
+                    route: ChatMainPage(), title: "Live Chat", widthMod: 0.45),
               ],
             ),
             const SizedBox(height: 20),

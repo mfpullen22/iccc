@@ -4,14 +4,14 @@ import 'package:iccc_app/pages/select_person_to_chat.dart';
 import 'package:iccc_app/widgets/bottom_navbar.dart';
 import "package:iccc_app/providers.dart";
 
-class ChatPage extends ConsumerStatefulWidget {
-  const ChatPage({Key? key}) : super(key: key);
+class ChatMainPage extends ConsumerStatefulWidget {
+  const ChatMainPage({Key? key}) : super(key: key);
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _ChatPageState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _ChatMainPageState();
 }
 
-class _ChatPageState extends ConsumerState<ChatPage>
+class _ChatMainPageState extends ConsumerState<ChatMainPage>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
   @override
@@ -59,7 +59,7 @@ class _ChatPageState extends ConsumerState<ChatPage>
             context,
             MaterialPageRoute(
                 builder: (_) =>
-                    SelectPersonToChat()) // change to actual select person page)),
+                    const SelectPersonToChat()) // change to actual select person page)),
             ),
       ),
       bottomNavigationBar: const BottomNavBarFb5(pageIndex: 4),

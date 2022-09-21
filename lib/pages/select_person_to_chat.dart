@@ -1,6 +1,9 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import "package:iccc_app/models/user_data.dart";
+import 'package:iccc_app/pages/chat_page.dart';
 import "package:iccc_app/providers.dart";
 import '../models/chat.dart';
 
@@ -10,7 +13,7 @@ class SelectPersonToChat extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ref) {
     return Scaffold(
-      appBar: AppBar(title: Text("Select Person to Chat With")),
+      appBar: AppBar(title: const Text("Select Person to Chat With")),
       body: SafeArea(
         child: StreamBuilder<List<UserData>>(
             stream: ref.read(databaseProvider)!.getUsers(),
@@ -39,7 +42,47 @@ class SelectPersonToChat extends ConsumerWidget {
                     children: [
                       ListTile(
                         title: Text(user.name),
-                        onTap: () async {},
+                        onTap: () async {
+                          final chatId = await ref
+                                  .read(databaseProvider)
+                                  ?.getChatStarted(myUser.uid, user.uid) ??
+                              false;
+                          // start a chat
+                          if (chatId == "") {
+                            await ref
+                                .read(databaseProvider)
+                                ?.startChat(myUser.uid, user.uid, user.name)
+                                .then((value) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ChatPage(
+                                      chat: Chat(
+                                    myUid: myUser.uid,
+                                    myName: "",
+                                    otherUid: user.uid,
+                                    otherName: user.name,
+                                    chatId: value,
+                                  )),
+                                ),
+                              );
+                            });
+                          } else {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ChatPage(
+                                    chat: Chat(
+                                  myUid: myUser.uid,
+                                  myName: "",
+                                  otherUid: user.uid,
+                                  otherName: user.name,
+                                  chatId: chatId.toString(),
+                                )),
+                              ),
+                            );
+                          }
+                        },
                       ),
                       const Divider(),
                     ],

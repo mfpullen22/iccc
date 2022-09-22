@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../models/chat.dart';
 import '../pages/chat_page.dart';
 import '../providers.dart';
-import 'package:google_fonts/google_fonts.dart';
+//import 'package:google_fonts/google_fonts.dart';
 
 class ListChatScreen extends ConsumerWidget {
   const ListChatScreen({Key? key}) : super(key: key);
@@ -35,20 +35,23 @@ class ListChatScreen extends ConsumerWidget {
             }
             return Column(
               children: [
-                ListTile(
-                  title: Text(
-                      myUser.uid == chat.myUid ? chat.otherName : chat.myName),
-                  onTap: () async {
-                    // start a chat
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => ChatPage(
-                          chat: chat,
+                Card(
+                  child: ListTile(
+                    title: Text(myUser.uid == chat.myUid
+                        ? chat.otherName
+                        : chat.myName),
+                    onTap: () async {
+                      // start a chat
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ChatPage(
+                            chat: chat,
+                          ),
                         ),
-                      ),
-                    );
-                  },
+                      );
+                    },
+                  ),
                 ),
               ],
             );

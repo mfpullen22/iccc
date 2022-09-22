@@ -40,19 +40,35 @@ class SelectPersonToChat extends ConsumerWidget {
                   }
                   return Column(
                     children: [
-                      ListTile(
-                        title: Text(user.name),
-                        onTap: () async {
-                          final chatId = await ref
+                      Card(
+                        child: ListTile(
+                          title: Text(user.name),
+                          onTap: () async {
+                            final chatId = await ref
+                                    .read(databaseProvider)
+                                    ?.getChatStarted(myUser.uid, user.uid) ??
+                                false;
+                            // start a chat
+                            if (chatId == "") {
+                              await ref
                                   .read(databaseProvider)
-                                  ?.getChatStarted(myUser.uid, user.uid) ??
-                              false;
-                          // start a chat
-                          if (chatId == "") {
-                            await ref
-                                .read(databaseProvider)
-                                ?.startChat(myUser.uid, user.uid, user.name)
-                                .then((value) {
+                                  ?.startChat(myUser.uid, user.uid, user.name)
+                                  .then((value) {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => ChatPage(
+                                        chat: Chat(
+                                      myUid: myUser.uid,
+                                      myName: "",
+                                      otherUid: user.uid,
+                                      otherName: user.name,
+                                      chatId: value,
+                                    )),
+                                  ),
+                                );
+                              });
+                            } else {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -62,27 +78,13 @@ class SelectPersonToChat extends ConsumerWidget {
                                     myName: "",
                                     otherUid: user.uid,
                                     otherName: user.name,
-                                    chatId: value,
+                                    chatId: chatId.toString(),
                                   )),
                                 ),
                               );
-                            });
-                          } else {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => ChatPage(
-                                    chat: Chat(
-                                  myUid: myUser.uid,
-                                  myName: "",
-                                  otherUid: user.uid,
-                                  otherName: user.name,
-                                  chatId: chatId.toString(),
-                                )),
-                              ),
-                            );
-                          }
-                        },
+                            }
+                          },
+                        ),
                       ),
                       const Divider(),
                     ],

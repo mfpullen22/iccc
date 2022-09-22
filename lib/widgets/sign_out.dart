@@ -1,7 +1,7 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:iccc_app/pages/auth/auth.dart';
-import 'package:iccc_app/pages/auth/sign_in_page.dart';
 
 class SignOut extends StatefulWidget {
   const SignOut({super.key});
@@ -24,10 +24,6 @@ class _SignOutState extends State<SignOut> {
     return IconButton(
         onPressed: () {
           signOut();
-
-/*           Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(builder: (context) => SignInPage()),
-              (Route<dynamic> route) => false); */
         },
         icon: const Icon(Icons.logout, color: Colors.white));
   }

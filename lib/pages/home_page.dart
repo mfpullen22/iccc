@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import "package:flutter/material.dart";
 import 'package:iccc_app/pages/abstracts_page.dart';
 import 'package:iccc_app/pages/chat_main_page.dart';
@@ -15,22 +14,13 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Home"),
-        automaticallyImplyLeading: false,
-        actions: [
-          SignOut(),
-/*           IconButton(
-              onPressed: () async {
-                firebaseAuth.signOut();
-                //FirebaseAuth.instance.signOut();
-                //ref.read(firebaseAuthProvider).signOut();
-              },
-              icon: const Icon(Icons.logout, color: Colors.white)) */
-        ],
-      ),
+          title: const Text("Home"),
+          automaticallyImplyLeading: false,
+          actions: const [
+            SignOut(),
+          ]),
       body: Center(
         child: Column(
           children: [

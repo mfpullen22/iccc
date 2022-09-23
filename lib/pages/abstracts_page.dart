@@ -7,19 +7,22 @@ class AbstractsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Abstracts"),
-        automaticallyImplyLeading: false,
-      ),
-      body: Center(
-        child: Column(
-          children: const [
-            Text("Abstracts Page"),
-          ],
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          title: const Text("Abstracts"),
+          automaticallyImplyLeading: false,
         ),
+        body: Center(
+          child: Column(
+            children: const [
+              Text("Abstracts Page"),
+            ],
+          ),
+        ),
+        bottomNavigationBar: const BottomNavBarFb5(pageIndex: 3),
       ),
-      bottomNavigationBar: const BottomNavBarFb5(pageIndex: 3),
     );
   }
 }

@@ -19,78 +19,85 @@ class _ChatPageState extends ConsumerState<ChatPage>
   @override
   Widget build(BuildContext context) {
     final myUid = ref.read(firebaseAuthProvider).currentUser!.uid;
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.chat.myUid == myUid
-            ? widget.chat.otherName
-            : widget.chat.myName),
-        actions: const <Widget>[
-          Icon(Icons.video_call),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 15),
-          ),
-          Icon(Icons.call),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 15),
-          ),
-          Icon(Icons.more_vert),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 15),
-          ),
-        ],
-      ),
-      body: SafeArea(
-        bottom: false,
-        child: Stack(
-          children: [
-            SizedBox(
-              width: double.infinity,
-              height: MediaQuery.of(context).size.height,
-              child: Image.network(
-                "https://i.pinimg.com/736x/8c/98/99/8c98994518b575bfd8c949e91d20548b.jpg",
-                fit: BoxFit.cover,
-              ),
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          title: Text(widget.chat.myUid == myUid
+              ? widget.chat.otherName
+              : widget.chat.myName),
+          actions: const <Widget>[
+            Icon(Icons.video_call),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15),
             ),
-            Column(
-              children: [
-                Expanded(
-                  child: StreamBuilder<List<Message>>(
-                    stream: ref
-                        .read(databaseProvider)!
-                        .getMessages(widget.chat.chatId),
-                    builder: (context, snapshot) {
-                      if (snapshot.connectionState == ConnectionState.active &&
-                          snapshot.hasData) {
-                        final messages = snapshot.data ?? [];
-                        return ListView.builder(
-                          reverse: true,
-                          itemCount: messages.length,
-                          itemBuilder: (_, index) {
-                            final message = messages[index];
-                            final isMe = message.myUid ==
-                                ref.read(firebaseAuthProvider).currentUser!.uid;
-                            if (isMe) {
-                              return Align(
-                                alignment: Alignment.centerRight,
-                                child: myChatBubble(message),
-                              );
-                            } else {
-                              return Align(
-                                alignment: Alignment.centerLeft,
-                                child: otherChatBubble(message),
-                              );
-                            }
-                          },
-                        );
-                      }
-                      return Container();
-                    },
-                  ),
-                ),
-                sendMessageField(),
-              ],
-            )
+            Icon(Icons.call),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15),
+            ),
+            Icon(Icons.more_vert),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15),
+            ),
           ],
+        ),
+        body: SafeArea(
+          bottom: false,
+          child: Stack(
+            children: [
+              SizedBox(
+                width: double.infinity,
+                height: MediaQuery.of(context).size.height,
+                child: Image.network(
+                  "https://i.pinimg.com/736x/8c/98/99/8c98994518b575bfd8c949e91d20548b.jpg",
+                  fit: BoxFit.cover,
+                ),
+              ),
+              Column(
+                children: [
+                  Expanded(
+                    child: StreamBuilder<List<Message>>(
+                      stream: ref
+                          .read(databaseProvider)!
+                          .getMessages(widget.chat.chatId),
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState ==
+                                ConnectionState.active &&
+                            snapshot.hasData) {
+                          final messages = snapshot.data ?? [];
+                          return ListView.builder(
+                            reverse: true,
+                            itemCount: messages.length,
+                            itemBuilder: (_, index) {
+                              final message = messages[index];
+                              final isMe = message.myUid ==
+                                  ref
+                                      .read(firebaseAuthProvider)
+                                      .currentUser!
+                                      .uid;
+                              if (isMe) {
+                                return Align(
+                                  alignment: Alignment.centerRight,
+                                  child: myChatBubble(message),
+                                );
+                              } else {
+                                return Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: otherChatBubble(message),
+                                );
+                              }
+                            },
+                          );
+                        }
+                        return Container();
+                      },
+                    ),
+                  ),
+                  sendMessageField(),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );

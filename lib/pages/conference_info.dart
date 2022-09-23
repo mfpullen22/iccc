@@ -6,17 +6,22 @@ class ConferenceInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text("Conference Info")),
-      extendBody: true,
-      bottomNavigationBar: const BottomNavBarFb5(
-        pageIndex: 5,
-      ),
-      body: Center(
-        child: Column(
-          children: const [
-            Text("Conference Info Page"),
-          ],
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text("Conference Info"),
+          centerTitle: true,
+        ),
+        extendBody: true,
+        bottomNavigationBar: const BottomNavBarFb5(
+          pageIndex: 5,
+        ),
+        body: Center(
+          child: Column(
+            children: const [
+              Text("Conference Info Page"),
+            ],
+          ),
         ),
       ),
     );

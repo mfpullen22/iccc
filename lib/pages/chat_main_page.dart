@@ -20,34 +20,37 @@ class _ChatMainPageState extends ConsumerState<ChatMainPage>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: const [
-            Text("Conference Chat"),
-            Text("Tap a name to continue your chat",
-                style: TextStyle(fontSize: 14))
-          ],
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          title: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: const [
+              Text("Conference Chat"),
+              Text("Tap a name to continue your chat",
+                  style: TextStyle(fontSize: 14))
+            ],
+          ),
+          automaticallyImplyLeading: false,
         ),
-        automaticallyImplyLeading: false,
-      ),
-      body: const ListChatScreen(), // Todo, change to list of chats
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: const Color.fromRGBO(122, 0, 25, 1),
-        child: const Icon(
-          Icons.message,
-          color: Colors.white,
+        body: const ListChatScreen(), // Todo, change to list of chats
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: const Color.fromRGBO(122, 0, 25, 1),
+          child: const Icon(
+            Icons.message,
+            color: Colors.white,
+          ),
+          onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (_) =>
+                      const SelectPersonToChat()) // change to actual select person page)),
+              ),
         ),
-        onPressed: () => Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (_) =>
-                    const SelectPersonToChat()) // change to actual select person page)),
-            ),
+        bottomNavigationBar: const BottomNavBarFb5(pageIndex: 4),
       ),
-      bottomNavigationBar: const BottomNavBarFb5(pageIndex: 4),
     );
   }
 }

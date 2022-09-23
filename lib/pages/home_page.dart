@@ -14,52 +14,64 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-          title: const Text("Home"),
-          automaticallyImplyLeading: false,
-          actions: const [
-            SignOut(),
-          ]),
-      body: Center(
-        child: Column(
-          children: [
-            const SizedBox(height: 20),
-            const TopCard(),
-            const SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                NavCard(
-                    route: SchedulePage(), title: "Schedule", widthMod: 0.45),
-                SizedBox(width: 20),
-                NavCard(
-                    route: PresentersPage(),
-                    title: "Presenters",
-                    widthMod: 0.45),
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+            centerTitle: true,
+            title: const Text("Home"),
+            automaticallyImplyLeading: false,
+            actions: const [
+              SignOut(),
+            ]),
+        body: Center(
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                //const SizedBox(height: 20),
+                const TopCard(),
+                const SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    NavCard(
+                        route: SchedulePage(),
+                        title: "Schedule",
+                        widthMod: 0.45),
+                    SizedBox(width: 20),
+                    NavCard(
+                        route: PresentersPage(),
+                        title: "Presenters",
+                        widthMod: 0.45),
+                  ],
+                ),
+                const SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    NavCard(
+                        route: AbstractsPage(),
+                        title: "Abstracts",
+                        widthMod: 0.45),
+                    SizedBox(width: 20),
+                    NavCard(
+                        route: ChatMainPage(),
+                        title: "Live Chat",
+                        widthMod: 0.45),
+                  ],
+                ),
+                const SizedBox(height: 20),
+                const NavCard(
+                    route: ConferenceInfo(),
+                    title: "Conference Info",
+                    widthMod: 0.95),
               ],
             ),
-            const SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                NavCard(
-                    route: AbstractsPage(), title: "Abstracts", widthMod: 0.45),
-                SizedBox(width: 20),
-                NavCard(
-                    route: ChatMainPage(), title: "Live Chat", widthMod: 0.45),
-              ],
-            ),
-            const SizedBox(height: 20),
-            const NavCard(
-                route: ConferenceInfo(),
-                title: "Conference Info",
-                widthMod: 0.95),
-          ],
+          ),
         ),
-      ),
-      bottomNavigationBar: const BottomNavBarFb5(
-        pageIndex: 0,
+        bottomNavigationBar: const BottomNavBarFb5(
+          pageIndex: 0,
+        ),
       ),
     );
   }

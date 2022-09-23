@@ -12,10 +12,13 @@ class SelectPersonToChat extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
-    return Scaffold(
-      appBar: AppBar(title: const Text("Select Person to Chat With")),
-      body: SafeArea(
-        child: StreamBuilder<List<UserData>>(
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text("Select Person to Chat With"),
+          centerTitle: true,
+        ),
+        body: StreamBuilder<List<UserData>>(
             stream: ref.read(databaseProvider)!.getUsers(),
             builder: (context, snapshot) {
               if (snapshot.hasError) {

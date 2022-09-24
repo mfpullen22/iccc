@@ -2,12 +2,24 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import "package:iccc_app/models/message.dart";
 import '../models/chat.dart';
 import '../models/user_data.dart';
+import "../models/presenter.dart";
 
 class FirestoreService {
   FirestoreService({required this.uid});
   final String uid;
 
   FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+  Stream<List<Presenter>> getPresenters() {
+    return firestore
+        .collection("presenters")
+        .snapshots()
+        .map((snapshot) => snapshot.docs.map((doc) {
+              final d = doc.data();
+              final u = Presenter.fromMap(d);
+              return u;
+            }).toList());
+  }
 
   // Save the user in a user collection
   Future<void> addUser(

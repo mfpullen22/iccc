@@ -1,13 +1,14 @@
 import "package:flutter/material.dart";
-import "package:iccc_app/data/speakers.dart";
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:iccc_app/models/presenter.dart';
+import 'package:iccc_app/providers.dart';
 import 'package:iccc_app/widgets/bottom_navbar.dart';
-import 'package:iccc_app/widgets/speakers_tile.dart';
 
-class PresentersPage extends StatelessWidget {
+class PresentersPage extends ConsumerWidget {
   const PresentersPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -15,23 +16,45 @@ class PresentersPage extends StatelessWidget {
           title: const Text("Presenters"),
           automaticallyImplyLeading: false,
         ),
-        body: ListView.builder(
-          itemCount: speakers.length,
-          itemBuilder: (context, index) {
-            final speaker = speakers[index];
-            return Padding(
-              padding: const EdgeInsets.all(8.5),
-              child: SpeakerTile(
-                name: speaker["name"],
-                university: speaker["university"],
-                title: speaker["title"],
-                position: speaker["position"],
-                email: speaker["email"],
-              ),
-            );
-          },
-        ),
-        bottomNavigationBar: const BottomNavBarFb5(pageIndex: 2),
+        body: StreamBuilder<List<Presenter>>(
+            stream: ref.read(databaseProvider)!.getPresenters(),
+            builder: (context, snapshot) {
+              if (snapshot.hasError) {
+                return const Center(
+                  child: Text("Something went wrong!"),
+                );
+              }
+              if (!snapshot.hasData) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+              final presenters = snapshot.data ?? [];
+              List<Map<String, dynamic>> presentersList = [];
+              for (var i = 0; i < presenters.length; i++) {
+                var item = presenters[i].toMap();
+                presentersList.add(item);
+              }
+              presentersList.sort(
+                (a, b) => (a["lastName"]).compareTo(b["lastName"]),
+              );
+              return ListView.builder(
+                  //itemCount: presenters.length,
+                  itemCount: presentersList.length,
+                  itemBuilder: (context, index) {
+                    //final presenter = presenters[index].toMap();
+                    return Column(
+                      children: [
+                        Card(
+                          child: Text(presentersList[index]["firstName"] +
+                              " " +
+                              presentersList[index]["lastName"]),
+                        ),
+                      ],
+                    );
+                  });
+            }),
+        bottomNavigationBar: const BottomNavBarFb5(pageIndex: 1),
       ),
     );
   }

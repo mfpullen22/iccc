@@ -26,20 +26,6 @@ class _ChatPageState extends ConsumerState<ChatPage>
           title: Text(widget.chat.myUid == myUid
               ? widget.chat.otherName
               : widget.chat.myName),
-          actions: const <Widget>[
-            Icon(Icons.video_call),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15),
-            ),
-            Icon(Icons.call),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15),
-            ),
-            Icon(Icons.more_vert),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15),
-            ),
-          ],
         ),
         body: SafeArea(
           bottom: false,

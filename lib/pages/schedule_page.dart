@@ -1,8 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import "package:flutter/material.dart";
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iccc_app/models/presenter.dart';
-import 'package:iccc_app/models/user_data.dart';
 import 'package:iccc_app/providers.dart';
 import 'package:iccc_app/widgets/bottom_navbar.dart';
 
@@ -32,14 +30,25 @@ class SchedulePage extends ConsumerWidget {
                 );
               }
               final presenters = snapshot.data ?? [];
+              List<Map<String, dynamic>> presentersList = [];
+              for (var i = 0; i < presenters.length; i++) {
+                var item = presenters[i].toMap();
+                presentersList.add(item);
+              }
+              presentersList.sort(
+                (a, b) => (a["lastName"]).compareTo(b["lastName"]),
+              );
               return ListView.builder(
-                  itemCount: presenters.length,
+                  //itemCount: presenters.length,
+                  itemCount: presentersList.length,
                   itemBuilder: (context, index) {
-                    final presenter = presenters[index];
+                    //final presenter = presenters[index].toMap();
                     return Column(
                       children: [
                         Card(
-                          child: Text(presenter.firstName),
+                          child: Text(presentersList[index]["firstName"] +
+                              " " +
+                              presentersList[index]["lastName"]),
                         ),
                       ],
                     );

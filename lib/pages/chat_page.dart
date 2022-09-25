@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import "package:iccc_app/models/chat.dart";
 import "package:iccc_app/models/message.dart";
 import "package:iccc_app/providers.dart";
+import 'package:google_fonts/google_fonts.dart';
 
 class ChatPage extends ConsumerStatefulWidget {
   final Chat chat;
@@ -23,9 +24,12 @@ class _ChatPageState extends ConsumerState<ChatPage>
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text(widget.chat.myUid == myUid
-              ? widget.chat.otherName
-              : widget.chat.myName),
+          title: Text(
+              widget.chat.myUid == myUid
+                  ? widget.chat.otherName
+                  : widget.chat.myName,
+              style: GoogleFonts.raleway(
+                  fontSize: 24, fontWeight: FontWeight.bold)),
         ),
         body: SafeArea(
           bottom: false,

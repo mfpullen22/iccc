@@ -5,6 +5,7 @@ import "package:iccc_app/models/user_data.dart";
 import 'package:iccc_app/pages/chat_page.dart';
 import "package:iccc_app/providers.dart";
 import '../models/chat.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SelectPersonToChat extends ConsumerWidget {
   const SelectPersonToChat({Key? key}) : super(key: key);
@@ -14,7 +15,9 @@ class SelectPersonToChat extends ConsumerWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("Select Person to Chat With"),
+          title: Text("Select Person to Chat With",
+              style: GoogleFonts.raleway(
+                  fontSize: 24, fontWeight: FontWeight.bold)),
           centerTitle: true,
         ),
         body: StreamBuilder<List<UserData>>(
@@ -22,7 +25,8 @@ class SelectPersonToChat extends ConsumerWidget {
             builder: (context, snapshot) {
               if (snapshot.hasError) {
                 return const Center(
-                  child: Text("Something went wrong!"),
+                  child: Text(
+                      "Something went wrong! Are you connected to the internet?"),
                 );
               }
               if (!snapshot.hasData) {
@@ -44,7 +48,9 @@ class SelectPersonToChat extends ConsumerWidget {
                     children: [
                       Card(
                         child: ListTile(
-                          title: Text(user.name),
+                          title: Text(user.name,
+                              style: GoogleFonts.raleway(
+                                  fontSize: 16, fontWeight: FontWeight.bold)),
                           onTap: () async {
                             final chatId = await ref
                                     .read(databaseProvider)

@@ -1,20 +1,20 @@
 import "package:flutter/material.dart";
 import 'package:iccc_app/pages/profile_page.dart';
 
-
 class SpeakerTile extends StatelessWidget {
   final String name;
   final String university;
   final String position;
-  final List<String> title;
+  final String title;
   final String email;
-  const SpeakerTile({
-    required this.name,
-    required this.university,
-    required this.position,
-    required this.title,
-    required this.email,
-    Key? key}) : super(key: key);
+  const SpeakerTile(
+      {required this.name,
+      required this.university,
+      required this.position,
+      required this.title,
+      required this.email,
+      Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,16 +25,16 @@ class SpeakerTile extends StatelessWidget {
         height: 95,
         padding: const EdgeInsets.all(15),
         decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(12.5),
-              boxShadow: [
-                BoxShadow(
-                    offset: const Offset(10, 20),
-                    blurRadius: 10,
-                    spreadRadius: 0,
-                    color: Colors.grey.withOpacity(0.05)),
-              ],
-            ),
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(12.5),
+          boxShadow: [
+            BoxShadow(
+                offset: const Offset(10, 20),
+                blurRadius: 10,
+                spreadRadius: 0,
+                color: Colors.grey.withOpacity(0.05)),
+          ],
+        ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
@@ -46,14 +46,14 @@ class SpeakerTile extends StatelessWidget {
             GestureDetector(
               onTap: () {
                 Navigator.push(
-                  context, MaterialPageRoute(
-                    builder: (context) => ProfilePage(
-                      name: name, 
-                      university: university, 
-                      position: position, 
-                      email: email, 
-                      title: title))
-                );
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ProfilePage(
+                            name: name,
+                            university: university,
+                            position: position,
+                            email: email,
+                            title: title)));
               },
               child: SizedBox(
                 width: screenSize.width * 0.75,
@@ -72,12 +72,12 @@ class SpeakerTile extends StatelessWidget {
                     FittedBox(
                       fit: BoxFit.fitWidth,
                       child: Text(
-                      university,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        color: Colors.grey,
-                        fontSize: 16,
-                       ),
+                        university,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          color: Colors.grey,
+                          fontSize: 16,
+                        ),
                       ),
                     ),
                     Text(
@@ -86,7 +86,6 @@ class SpeakerTile extends StatelessWidget {
                       style: const TextStyle(
                         color: Colors.grey,
                         fontSize: 16,
-                
                       ),
                     ),
                   ],

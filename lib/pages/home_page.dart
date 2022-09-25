@@ -8,6 +8,7 @@ import 'package:iccc_app/widgets/bottom_navbar.dart';
 import 'package:iccc_app/widgets/nav_card.dart';
 import 'package:iccc_app/widgets/top_card.dart';
 import "package:iccc_app/widgets/sign_out.dart";
+import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -18,7 +19,9 @@ class HomePage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
             centerTitle: true,
-            title: const Text("Home"),
+            title: Text("Home",
+                style: GoogleFonts.raleway(
+                    fontSize: 24, fontWeight: FontWeight.bold)),
             automaticallyImplyLeading: false,
             actions: const [
               SignOut(),

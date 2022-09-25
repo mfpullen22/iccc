@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iccc_app/models/presenter.dart';
 import 'package:iccc_app/providers.dart';
 import 'package:iccc_app/widgets/bottom_navbar.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SchedulePage extends ConsumerWidget {
   const SchedulePage({Key? key}) : super(key: key);
@@ -13,7 +14,9 @@ class SchedulePage extends ConsumerWidget {
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: const Text("Schedule"),
+          title: Text("Schedule",
+              style: GoogleFonts.raleway(
+                  fontSize: 24, fontWeight: FontWeight.bold)),
           automaticallyImplyLeading: false,
         ),
         body: StreamBuilder<List<Presenter>>(
@@ -21,7 +24,8 @@ class SchedulePage extends ConsumerWidget {
             builder: (context, snapshot) {
               if (snapshot.hasError) {
                 return const Center(
-                  child: Text("Something went wrong!"),
+                  child: Text(
+                      "Something went wrong! Are you connected to the internet?"),
                 );
               }
               if (!snapshot.hasData) {

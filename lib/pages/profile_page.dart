@@ -6,7 +6,7 @@ class ProfilePage extends StatelessWidget {
   final String university;
   final String position;
   final String email;
-  final List<String> title;
+  final String title;
   const ProfilePage(
       {required this.name,
       required this.university,
@@ -22,7 +22,7 @@ class ProfilePage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("Profile"),
+          title: Text("$name's Profile"),
           centerTitle: true,
         ),
         extendBody: true,
@@ -53,7 +53,7 @@ class ProfilePage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(0),
                         child: const Icon(Icons.account_circle, size: 200)),
                     Text(
-                      name,
+                      "$name, $title",
                       style: const TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
@@ -62,6 +62,7 @@ class ProfilePage extends StatelessWidget {
                     ),
                     Text(
                       position,
+                      textAlign: TextAlign.center,
                       style: const TextStyle(
                         fontSize: 20,
                         color: Colors.grey,
@@ -102,19 +103,19 @@ class ProfilePage extends StatelessWidget {
                       )
                     ]),
                 child: Column(
-                  children: [
-                    const Text("Presentations",
+                  children: const [
+                    Text("Presentations",
                         style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                             color: Colors.black,
                             decoration: TextDecoration.underline)),
-                    const SizedBox(height: 10),
-                    for (var name in title)
-                      Text('"$name" \n',
-                          style: const TextStyle(
-                            fontSize: 16,
-                          )),
+                    SizedBox(height: 10),
+                    // for (var name in title)
+                    //   Text('"$name" \n',
+                    //       style: const TextStyle(
+                    //         fontSize: 16,
+                    //       )),
                   ],
                 ),
               ),

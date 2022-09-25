@@ -7,6 +7,7 @@ class Presenter {
   String employer;
   String position;
   String email;
+  //List<Map<String, String>> presentations;
   //Map presentations;
 
   Presenter({
@@ -26,7 +27,7 @@ class Presenter {
         employer = map['employer'] ?? "",
         position = map['position'] ?? "",
         email = map['email'] ?? "";
-  // presentations = map['presentations'] ?? "";
+  //presentations = map['presentations'] ?? "";
 
   Map<String, dynamic> toMap() {
     return {

@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import 'package:iccc_app/widgets/bottom_navbar.dart';
-//import 'package:iccc_app/widgets/bottom_navbar.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AbstractsPage extends StatelessWidget {
   const AbstractsPage({super.key});
@@ -11,7 +11,9 @@ class AbstractsPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: const Text("Abstracts"),
+          title: Text("Abstracts",
+              style: GoogleFonts.raleway(
+                  fontSize: 24, fontWeight: FontWeight.bold)),
           automaticallyImplyLeading: false,
         ),
         body: Center(

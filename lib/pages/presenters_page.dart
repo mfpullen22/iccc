@@ -34,8 +34,9 @@ class PresentersPage extends ConsumerWidget {
           ),
           automaticallyImplyLeading: false,
         ),
-        body: StreamBuilder<List<Presenter>>(
-            stream: ref.read(databaseProvider)!.getPresenters(),
+        body: StreamBuilder<List<Presentation>>(
+            //stream: ref.read(databaseProvider)!.getPresenters(),
+            stream: ref.read(databaseProvider)!.getPresentations(),
             builder: (context, snapshot) {
               if (snapshot.hasError) {
                 return const Center(
@@ -49,9 +50,14 @@ class PresentersPage extends ConsumerWidget {
                 );
               }
               final presenters = snapshot.data ?? [];
+              final lastNames = [];
               List<Map<String, dynamic>> presentersList = [];
               for (var i = 0; i < presenters.length; i++) {
                 var item = presenters[i].toMap();
+                if (lastNames.contains(item["lastName"])) {
+                  continue;
+                }
+                lastNames.add(item["lastName"]);
                 presentersList.add(item);
               }
               presentersList.sort(
@@ -70,8 +76,6 @@ class PresentersPage extends ConsumerWidget {
                                 presentersList[index]["firstName"] +
                                     " " +
                                     presentersList[index]["lastName"] +
-                                    ", " +
-                                    presentersList[index]["degree"] +
                                     " - " +
                                     presentersList[index]["employer"],
                                 style: GoogleFonts.raleway(

@@ -1,6 +1,10 @@
 class Presentation {
   String firstName;
   String lastName;
+  String degree;
+  String employer;
+  String position;
+  String email;
   String day;
   String time;
   String title;
@@ -9,6 +13,10 @@ class Presentation {
   Presentation({
     required this.firstName,
     required this.lastName,
+    required this.degree,
+    required this.employer,
+    required this.position,
+    required this.email,
     required this.day,
     required this.time,
     required this.title,
@@ -18,6 +26,10 @@ class Presentation {
   Presentation.fromMap(Map<String, dynamic> map)
       : firstName = map['firstName'] ?? "",
         lastName = map['lastName'] ?? "",
+        degree = map["degree"] ?? "",
+        employer = map["employer"] ?? "",
+        position = map["position"] ?? "",
+        email = map["email"] ?? "",
         day = map['day'] ?? "",
         time = map['time'] ?? "",
         title = map['title'] ?? "",
@@ -31,6 +43,10 @@ class Presentation {
       "time": time,
       "title": title,
       "track": track,
+      "degree": degree,
+      "employer": employer,
+      "position": position,
+      "email": email,
     };
   }
 }

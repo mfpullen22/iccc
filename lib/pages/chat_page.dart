@@ -115,10 +115,6 @@ class _ChatPageState extends ConsumerState<ChatPage>
                   const SizedBox(
                     width: 10,
                   ),
-                  Icon(
-                    Icons.insert_emoticon,
-                    color: Colors.grey[500],
-                  ),
                   const SizedBox(
                     width: 10,
                   ),
@@ -139,17 +135,6 @@ class _ChatPageState extends ConsumerState<ChatPage>
                         ),
                       ),
                     ),
-                  ),
-                  Row(
-                    children: [
-                      const Icon(Icons.link),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      _textMessageController.text.isEmpty
-                          ? const Icon(Icons.camera_alt)
-                          : const Text(""),
-                    ],
                   ),
                   const SizedBox(
                     width: 15,

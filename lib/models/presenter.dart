@@ -1,5 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-
 class Presenter {
   String firstName;
   String lastName;
@@ -40,7 +38,7 @@ class Presenter {
       //"presentations": presentations,
     };
   }
-
+/* 
   factory Presenter.fromFirestore(DocumentSnapshot doc) {
     Map data = doc.data() as Map;
     return Presenter(
@@ -73,5 +71,5 @@ class Presenter {
         'position': position,
         "email": email,
         //"presentations": presentations,
-      };
+      };*/
 }

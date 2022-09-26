@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import "package:iccc_app/models/message.dart";
+import 'package:iccc_app/models/presentation.dart';
 import '../models/chat.dart';
 import '../models/user_data.dart';
 import "../models/presenter.dart";
@@ -17,6 +18,17 @@ class FirestoreService {
         .map((snapshot) => snapshot.docs.map((doc) {
               final d = doc.data();
               final u = Presenter.fromMap(d);
+              return u;
+            }).toList());
+  }
+
+  Stream<List<Presentation>> getPresentations() {
+    return firestore
+        .collection("presentations")
+        .snapshots()
+        .map((snapshot) => snapshot.docs.map((doc) {
+              final d = doc.data();
+              final u = Presentation.fromMap(d);
               return u;
             }).toList());
   }

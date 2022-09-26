@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:iccc_app/models/presentation.dart';
 import 'package:iccc_app/models/presenter.dart';
 import 'package:iccc_app/pages/profile_page.dart';
 import 'package:iccc_app/providers.dart';
@@ -12,6 +13,9 @@ class PresentersPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ref) {
     //final screenSize = MediaQuery.of(context).size;
+    final Stream<List<Presentation>> presentations =
+        ref.read(databaseProvider)!.getPresentations();
+
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(

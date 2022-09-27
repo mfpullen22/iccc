@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import 'package:iccc_app/widgets/bottom_navbar.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ProfilePage extends StatelessWidget {
   final String name;
@@ -7,18 +8,30 @@ class ProfilePage extends StatelessWidget {
   final String position;
   final String email;
   final String title;
+  final List<Map<String, dynamic>> totalList;
   const ProfilePage(
       {required this.name,
       required this.university,
       required this.position,
       required this.email,
       required this.title,
+      required this.totalList,
       Key? key})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
+    final presentations = [];
+    for (var item in totalList) {
+      if (item["email"] == email) {
+        if (item["title"] == "") {
+          presentations.add("Section Talk");
+        } else {
+          presentations.add(item["title"]);
+        }
+      }
+    }
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -103,19 +116,17 @@ class ProfilePage extends StatelessWidget {
                       )
                     ]),
                 child: Column(
-                  children: const [
+                  children: [
                     Text("Presentations",
-                        style: TextStyle(
+                        style: GoogleFonts.raleway(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
-                            color: Colors.black,
                             decoration: TextDecoration.underline)),
                     SizedBox(height: 10),
-                    // for (var name in title)
-                    //   Text('"$name" \n',
-                    //       style: const TextStyle(
-                    //         fontSize: 16,
-                    //       )),
+                    for (var presentation in presentations)
+                      Text(presentation,
+                          style: GoogleFonts.raleway(
+                              fontSize: 16, fontWeight: FontWeight.bold))
                   ],
                 ),
               ),

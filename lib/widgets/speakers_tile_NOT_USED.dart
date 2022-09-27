@@ -1,4 +1,6 @@
-import "package:flutter/material.dart";
+// ignore_for_file: file_names
+
+/* import "package:flutter/material.dart";
 import 'package:iccc_app/pages/profile_page.dart';
 
 class SpeakerTile extends StatelessWidget {
@@ -49,11 +51,13 @@ class SpeakerTile extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                         builder: (context) => ProfilePage(
-                            name: name,
-                            university: university,
-                            position: position,
-                            email: email,
-                            title: title)));
+                              name: name,
+                              university: university,
+                              position: position,
+                              email: email,
+                              title: title,
+                              totalList: [],
+                            )));
               },
               child: SizedBox(
                 width: screenSize.width * 0.75,
@@ -98,3 +102,4 @@ class SpeakerTile extends StatelessWidget {
     );
   }
 }
+ */

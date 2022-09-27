@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iccc_app/models/presentation.dart';
-import 'package:iccc_app/models/presenter.dart';
+//import 'package:iccc_app/models/presenter.dart';
 import 'package:iccc_app/pages/profile_page.dart';
 import 'package:iccc_app/providers.dart';
 import 'package:iccc_app/widgets/bottom_navbar.dart';
@@ -13,8 +13,8 @@ class PresentersPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ref) {
     //final screenSize = MediaQuery.of(context).size;
-    final Stream<List<Presentation>> presentations =
-        ref.read(databaseProvider)!.getPresentations();
+    //final Stream<List<Presentation>> presentations =
+    //ref.read(databaseProvider)!.getPresentations();
 
     return SafeArea(
       child: Scaffold(
@@ -52,8 +52,10 @@ class PresentersPage extends ConsumerWidget {
               final presenters = snapshot.data ?? [];
               final lastNames = [];
               List<Map<String, dynamic>> presentersList = [];
+              List<Map<String, dynamic>> presentationList = [];
               for (var i = 0; i < presenters.length; i++) {
                 var item = presenters[i].toMap();
+                presentationList.add(item);
                 if (lastNames.contains(item["lastName"])) {
                   continue;
                 }
@@ -93,7 +95,8 @@ class PresentersPage extends ConsumerWidget {
                                       position: presentersList[index]
                                           ["position"],
                                       email: presentersList[index]["email"],
-                                      title: presentersList[index]["degree"]),
+                                      title: presentersList[index]["degree"],
+                                      totalList: presentationList),
                                 ),
                               );
                             },

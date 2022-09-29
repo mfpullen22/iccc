@@ -122,7 +122,7 @@ class ProfilePage extends StatelessWidget {
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                             decoration: TextDecoration.underline)),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     for (var presentation in presentations)
                       Text(presentation,
                           style: GoogleFonts.raleway(

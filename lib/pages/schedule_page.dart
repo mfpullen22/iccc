@@ -5,11 +5,16 @@ import 'package:iccc_app/providers.dart';
 import 'package:iccc_app/widgets/bottom_navbar.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class SchedulePage extends ConsumerWidget {
+class SchedulePage extends ConsumerStatefulWidget {
   const SchedulePage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, ref) {
+  ConsumerState<ConsumerStatefulWidget> createState() => _SchedulePageState();
+}
+
+class _SchedulePageState extends ConsumerState<SchedulePage> {
+  @override
+  Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(

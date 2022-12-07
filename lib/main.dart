@@ -29,8 +29,12 @@ class MyApp extends ConsumerWidget {
         // primarySwatch: Colors.blue,
       ),
       home: AuthWidget(
-        signedInBuilder: (context) => const HomePage(),
-        nonSignedInBuilder: (_) => const SignInPage(),
+        signedInBuilder: (context) => const Scaffold(
+          body: Center(child: Text("Signed In!")),
+        ),
+        nonSignedInBuilder: (_) => const Scaffold(
+          body: Center(child: Text("NOT signed in!")),
+        ),
       ),
       routes: <String, WidgetBuilder>{
         "/SignIn": (BuildContext context) => const SignInPage(),
@@ -39,3 +43,13 @@ class MyApp extends ConsumerWidget {
     );
   }
 }
+
+
+/*       home: AuthWidget(
+        signedInBuilder: (context) => const HomePage(),
+        nonSignedInBuilder: (_) => const SignInPage(),
+      ),
+      routes: <String, WidgetBuilder>{
+        "/SignIn": (BuildContext context) => const SignInPage(),
+        "/Home": (BuildContext context) => const HomePage(),
+      }, */

@@ -2,6 +2,7 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:iccc_app/pages/auth/sign_in_page.dart';
 
 class SignOut extends StatefulWidget {
   const SignOut({super.key});
@@ -14,9 +15,9 @@ class _SignOutState extends State<SignOut> {
   FirebaseAuth auth = FirebaseAuth.instance;
 
   signOut() async {
-    await auth.signOut();
-    Navigator.of(context)
-        .pushNamedAndRemoveUntil('/SignIn', (Route<dynamic> route) => false);
+    await FirebaseAuth.instance.signOut();
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => const SignInPage()));
   }
 
   @override
@@ -28,3 +29,6 @@ class _SignOutState extends State<SignOut> {
         icon: const Icon(Icons.logout, color: Colors.white));
   }
 }
+
+/*     Navigator.of(context)
+        .pushNamedAndRemoveUntil('/SignIn', (Route<dynamic> route) => false); */

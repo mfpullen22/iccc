@@ -25,7 +25,7 @@ class _SchedulePageState extends ConsumerState<SchedulePage> {
           automaticallyImplyLeading: false,
         ),
         body: StreamBuilder<List<Presentation>>(
-            stream: ref.read(databaseProvider)!.getPresentations(),
+            stream: ref.read(databaseProvider)?.getPresentations(),
             builder: (context, snapshot) {
               if (snapshot.hasError) {
                 return const Center(

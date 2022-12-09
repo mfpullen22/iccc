@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iccc_app/pages/list_chat_screen.dart';
 import 'package:iccc_app/pages/select_person_to_chat.dart';
-import 'package:iccc_app/pages/set_profile.dart';
 import 'package:iccc_app/widgets/bottom_navbar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -24,7 +23,6 @@ class _ChatMainPageState extends ConsumerState<ChatMainPage>
   @override
   Widget build(BuildContext context) {
     var user = FirebaseAuth.instance.currentUser;
-    var username = TextEditingController();
     if (user?.displayName != null) {}
     return SafeArea(
       child: Scaffold(
@@ -44,34 +42,7 @@ class _ChatMainPageState extends ConsumerState<ChatMainPage>
           ),
           automaticallyImplyLeading: false,
         ),
-        body: user?.displayName != null
-            ? const ListChatScreen()
-            // ignore: sized_box_for_whitespace
-            : Container(
-                width: MediaQuery.of(context).size.width,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                        "Before you can chat, we need to know what to call you!",
-                        textAlign: TextAlign.center,
-                        style: GoogleFonts.raleway(
-                            fontSize: 24, fontWeight: FontWeight.bold)),
-                    CustomInputFieldFb1(
-                        inputController: username,
-                        hintText: "What's your name?",
-                        labelText: "Name"),
-                    ElevatedButton(
-                        onPressed: () {
-                          setState(() {
-                            user?.updateDisplayName(username.text);
-                          });
-                        },
-                        child: const Text("Update Profile"))
-                  ],
-                ),
-              ), // Todo, change to list of chats
+        body: const ListChatScreen(), // Todo, change to list of chats
         floatingActionButton: FloatingActionButton(
           backgroundColor: const Color.fromRGBO(122, 0, 25, 1),
           child: const Icon(

@@ -4,6 +4,7 @@ import 'package:iccc_app/models/presentation.dart';
 import 'package:iccc_app/providers.dart';
 import 'package:iccc_app/widgets/bottom_navbar.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:iccc_app/widgets/tabbar.dart';
 
 class SchedulePage extends ConsumerStatefulWidget {
   const SchedulePage({Key? key}) : super(key: key);
@@ -24,7 +25,14 @@ class _SchedulePageState extends ConsumerState<SchedulePage> {
                   fontSize: 24, fontWeight: FontWeight.bold)),
           automaticallyImplyLeading: false,
         ),
-        body: StreamBuilder<List<Presentation>>(
+        body: TabBarAndTabViews(),
+        bottomNavigationBar: const BottomNavBarFb5(pageIndex: 1),
+      ),
+    );
+  }
+}
+
+/* StreamBuilder<List<Presentation>>(
             stream: ref.read(databaseProvider)?.getPresentations(),
             builder: (context, snapshot) {
               if (snapshot.hasError) {
@@ -64,9 +72,4 @@ class _SchedulePageState extends ConsumerState<SchedulePage> {
                       ],
                     );
                   });
-            }),
-        bottomNavigationBar: const BottomNavBarFb5(pageIndex: 1),
-      ),
-    );
-  }
-}
+            }), */

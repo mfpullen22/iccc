@@ -49,12 +49,14 @@ class FirestoreService {
   Stream<List<UserData>> getUsers() {
     return firestore
         .collection("users")
+        .orderBy("name")
         .snapshots()
         .map((snapshot) => snapshot.docs.map((doc) {
               final d = doc.data();
               final u = UserData.fromMap(d);
               return u;
             }).toList());
+    
   }
 
   // start a chat with 2 users

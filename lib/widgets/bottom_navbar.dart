@@ -33,7 +33,7 @@ class BottomNavBarFb5 extends StatelessWidget {
                   icon: Icons.home,
                   selected: pageIndex == 0,
                   onPressed: () {
-                    Navigator.push(
+                    Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                             builder: (context) => const HomePage()));
@@ -43,7 +43,7 @@ class BottomNavBarFb5 extends StatelessWidget {
                   icon: Icons.date_range_outlined,
                   selected: pageIndex == 1,
                   onPressed: () {
-                    Navigator.push(
+                    Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                             builder: (context) => const SchedulePage()));
@@ -53,7 +53,7 @@ class BottomNavBarFb5 extends StatelessWidget {
                   icon: Icons.group,
                   selected: pageIndex == 2,
                   onPressed: () {
-                    Navigator.push(
+                    Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                             builder: (context) => const PresentersPage()));
@@ -63,7 +63,7 @@ class BottomNavBarFb5 extends StatelessWidget {
                   icon: Icons.text_snippet_outlined,
                   selected: pageIndex == 3,
                   onPressed: () {
-                    Navigator.push(
+                    Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                             builder: (context) => const AbstractsPage()));
@@ -73,7 +73,7 @@ class BottomNavBarFb5 extends StatelessWidget {
                   icon: Icons.forum_outlined,
                   selected: pageIndex == 4,
                   onPressed: () {
-                    Navigator.push(
+                    Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                             builder: (context) => const ChatMainPage()));

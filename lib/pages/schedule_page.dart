@@ -4,6 +4,7 @@ import 'package:iccc_app/models/presentation.dart';
 import 'package:iccc_app/providers.dart';
 import 'package:iccc_app/widgets/bottom_navbar.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:iccc_app/widgets/scheduleStream.dart';
 import 'package:iccc_app/widgets/tabbar.dart';
 
 class SchedulePage extends ConsumerStatefulWidget {
@@ -16,17 +17,69 @@ class SchedulePage extends ConsumerStatefulWidget {
 class _SchedulePageState extends ConsumerState<SchedulePage> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text("Schedule",
-              style: GoogleFonts.raleway(
-                  fontSize: 24, fontWeight: FontWeight.bold)),
-          automaticallyImplyLeading: false,
+    var fullSchedule = ref.read(databaseProvider)?.getPresentations("10");
+    var monSchedule = [];
+    fullSchedule!.forEach((k) => monSchedule.add(k));
+    return DefaultTabController(
+      initialIndex: 0,
+      length: 5,
+      child: SafeArea(
+        child: Scaffold(
+          appBar: AppBar(
+            centerTitle: true,
+            title: Text("Schedule",
+                style: GoogleFonts.raleway(
+                    fontSize: 24, fontWeight: FontWeight.bold)),
+            automaticallyImplyLeading: false,
+            bottom: TabBar(
+              indicator: BoxDecoration(
+                borderRadius: BorderRadius.circular(
+                  25.0,
+                ),
+                color: Colors.white,
+              ),
+              labelColor: Colors.black,
+              unselectedLabelColor: Colors.white,
+              tabs: const [
+                Tab(
+                  child: Text("Jan 9"),
+                ),
+                Tab(
+                  child: Text("Jan 10"),
+                ),
+                Tab(
+                  child: Text("Jan 11"),
+                ),
+                Tab(
+                  child: Text("Jan 12"),
+                ),
+                Tab(
+                  child: Text("Jan 13"),
+                ),
+              ],
+            ),
+          ),
+          body: TabBarView(
+            children: [
+              Center(
+                child: ScheduleStream(day: "9"),
+              ),
+              Center(
+                child: ScheduleStream(day: "10"),
+              ),
+              Center(
+                child: ScheduleStream(day: "11"),
+              ),
+              Center(
+                child: ScheduleStream(day: "12"),
+              ),
+              Center(
+                child: ScheduleStream(day: "13"),
+              ),
+            ],
+          ),
+          bottomNavigationBar: const BottomNavBarFb5(pageIndex: 1),
         ),
-        body: TabBarAndTabViews(),
-        bottomNavigationBar: const BottomNavBarFb5(pageIndex: 1),
       ),
     );
   }

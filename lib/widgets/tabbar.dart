@@ -1,6 +1,7 @@
 // ignore_for_file: non_constant_identifier_names, use_key_in_widget_constructors
 
 import "package:flutter/material.dart";
+import 'package:iccc_app/widgets/scheduleStream.dart';
 
 class TabPair {
   final Tab tab;
@@ -52,7 +53,7 @@ List<TabPair> TabPairs = [
       ),
     ),
   ),
-    TabPair(
+  TabPair(
     tab: const Tab(
       text: '1/12',
     ),
@@ -66,7 +67,7 @@ List<TabPair> TabPairs = [
       ),
     ),
   ),
-    TabPair(
+  TabPair(
     tab: const Tab(
       text: '1/13',
     ),
@@ -81,6 +82,7 @@ List<TabPair> TabPairs = [
     ),
   ),
 ];
+
 class TabBarAndTabViews extends StatefulWidget {
   @override
   // ignore: library_private_types_in_public_api

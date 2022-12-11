@@ -36,7 +36,7 @@ class PresentersPage extends ConsumerWidget {
         ),
         body: StreamBuilder<List<Presentation>>(
             //stream: ref.read(databaseProvider)!.getPresenters(),
-            stream: ref.read(databaseProvider)!.getPresentations(),
+            stream: ref.read(databaseProvider)!.getPresentations("10"),
             builder: (context, snapshot) {
               if (snapshot.hasError) {
                 return const Center(

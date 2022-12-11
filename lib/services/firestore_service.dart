@@ -22,9 +22,10 @@ class FirestoreService {
             }).toList());
   }
 
-  Stream<List<Presentation>> getPresentations() {
+  Stream<List<Presentation>> getPresentations(day) {
     return firestore
         .collection("presentations")
+        .where("day", isEqualTo: day)
         .snapshots()
         .map((snapshot) => snapshot.docs.map((doc) {
               final d = doc.data();
@@ -56,7 +57,6 @@ class FirestoreService {
               final u = UserData.fromMap(d);
               return u;
             }).toList());
-    
   }
 
   // start a chat with 2 users

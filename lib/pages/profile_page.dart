@@ -65,20 +65,26 @@ class ProfilePage extends StatelessWidget {
                     ClipRRect(
                         borderRadius: BorderRadius.circular(0),
                         child: const Icon(Icons.account_circle, size: 200)),
-                    Text(
-                      "$name, $title",
-                      style: const TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
+                    FittedBox(
+                      fit: BoxFit.fitWidth,
+                      child: Text(
+                        "$name, $title",
+                        style: const TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
                       ),
                     ),
-                    Text(
-                      position,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        fontSize: 20,
-                        color: Colors.grey,
+                    FittedBox(
+                      fit: BoxFit.fitWidth,
+                      child: Text(
+                        position,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontSize: 20,
+                          color: Colors.grey,
+                        ),
                       ),
                     ),
                     FittedBox(
@@ -90,11 +96,14 @@ class ProfilePage extends StatelessWidget {
                             color: Colors.grey,
                           ),
                         )),
-                    Text(
-                      "Contact: $email",
-                      style: const TextStyle(
-                        fontSize: 20,
-                        color: Colors.grey,
+                    FittedBox(
+                      fit: BoxFit.fitWidth,
+                      child: Text(
+                        "Contact: $email",
+                        style: const TextStyle(
+                          fontSize: 20,
+                          color: Colors.grey,
+                        ),
                       ),
                     ),
                   ],

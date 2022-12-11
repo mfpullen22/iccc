@@ -3,6 +3,7 @@
 import "package:flutter/material.dart";
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iccc_app/models/presentation.dart';
+import 'package:iccc_app/pages/schedules/monday_page.dart';
 import 'package:iccc_app/providers.dart';
 
 class ScheduleStream extends ConsumerStatefulWidget {
@@ -41,9 +42,15 @@ class _ScheduleStreamState extends ConsumerState<ScheduleStream> {
           presentationsList.sort(
             (a, b) => (a["day"]).compareTo(b["day"]),
           );
-          Map<String, dynamic> intro =
-              presentationsList.firstWhere((element) => element["time"] == "9");
-          List<Map<String, dynamic>> schedule = [
+/*           Map<String, dynamic> intro =
+              presentationsList.firstWhere((element) => element["time"] == "9"); */
+          List<Map<String, dynamic>> monSchedule = presentationsList.where((element) => element["day"] == "9").toList();
+          List<Map<String, dynamic>> tueSchedule = presentationsList.where((element) => element["day"] == "10").toList();
+          List<Map<String, dynamic>> wedSchedule = presentationsList.where((element) => element["day"] == "11").toList();
+          List<Map<String, dynamic>> thuSchedule = presentationsList.where((element) => element["day"] == "12").toList();
+          List<Map<String, dynamic>> friSchedule = presentationsList.where((element) => element["day"] == "13").toList();
+
+/*           [
             presentationsList.firstWhere((element) => element["time"] == "9"),
             presentationsList.firstWhere((element) => element["time"] == "910"),
             presentationsList.firstWhere((element) => element["time"] == "920"),
@@ -57,22 +64,18 @@ class _ScheduleStreamState extends ConsumerState<ScheduleStream> {
                 .firstWhere((element) => element["time"] == "1020"),
             presentationsList
                 .firstWhere((element) => element["time"] == "1030"),
-          ];
-          return ListView.builder(
-              itemCount: schedule.length,
-              itemBuilder: (context, index) {
-                return Column(
-                  children: [
-                    Card(
-                      child: Text(schedule[index]["lastName"] +
-                          " - " +
-                          schedule[index]["time"] +
-                          " - " +
-                          schedule[index]["title"]),
-                    )
-                  ],
-                );
-              });
+          ]; */
+          if(widget.day == "9") {
+            return MondayPage(schedule: monSchedule);
+          } else if(widget.day == "10") {
+            return MondayPage(schedule: tueSchedule);
+          } else if(widget.day == "11") {
+            return MondayPage(schedule: wedSchedule);
+          } else if(widget.day == "12") {
+            return MondayPage(schedule: thuSchedule);
+          } else {
+            return MondayPage(schedule: friSchedule);
+          }
         });
   }
 }
@@ -91,6 +94,22 @@ class _ScheduleStreamState extends ConsumerState<ScheduleStream> {
                           " - " +
                           presentationsList[index]["time"]),
                     ),
+                  ],
+                );
+              }); */
+
+/* ListView.builder(
+              itemCount: schedule.length,
+              itemBuilder: (context, index) {
+                return Column(
+                  children: [
+                    Card(
+                      child: Text(schedule[index]["lastName"] +
+                          " - " +
+                          schedule[index]["time"] +
+                          " - " +
+                          schedule[index]["title"]),
+                    )
                   ],
                 );
               }); */

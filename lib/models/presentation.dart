@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 class Presentation {
   String firstName;
   String lastName;
@@ -6,22 +8,25 @@ class Presentation {
   String position;
   String email;
   String day;
-  String time;
+  Int time;
   String title;
   String track;
+  String oral;
+  String abstract;
 
-  Presentation({
-    required this.firstName,
-    required this.lastName,
-    required this.degree,
-    required this.employer,
-    required this.position,
-    required this.email,
-    required this.day,
-    required this.time,
-    required this.title,
-    required this.track,
-  });
+  Presentation(
+      {required this.firstName,
+      required this.lastName,
+      required this.degree,
+      required this.employer,
+      required this.position,
+      required this.email,
+      required this.day,
+      required this.time,
+      required this.title,
+      required this.track,
+      required this.oral,
+      required this.abstract});
 
   Presentation.fromMap(Map<String, dynamic> map)
       : firstName = map['firstName'] ?? "",
@@ -33,7 +38,9 @@ class Presentation {
         day = map['day'] ?? "",
         time = map['time'] ?? "",
         title = map['title'] ?? "",
-        track = map["track"] ?? "";
+        track = map["track"] ?? "",
+        oral = map["oral"] ?? "",
+        abstract = map["abstract"] ?? "";
 
   Map<String, dynamic> toMap() {
     return {
@@ -47,6 +54,8 @@ class Presentation {
       "employer": employer,
       "position": position,
       "email": email,
+      "oral": oral,
+      "abstract": abstract,
     };
   }
 }

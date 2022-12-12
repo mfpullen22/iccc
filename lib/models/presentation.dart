@@ -8,11 +8,11 @@ class Presentation {
   String position;
   String email;
   String day;
-  Int time;
+  int time;
   String title;
   String track;
   String oral;
-  String abstract;
+  String abs;
 
   Presentation(
       {required this.firstName,
@@ -26,7 +26,7 @@ class Presentation {
       required this.title,
       required this.track,
       required this.oral,
-      required this.abstract});
+      required this.abs});
 
   Presentation.fromMap(Map<String, dynamic> map)
       : firstName = map['firstName'] ?? "",
@@ -36,11 +36,11 @@ class Presentation {
         position = map["position"] ?? "",
         email = map["email"] ?? "",
         day = map['day'] ?? "",
-        time = map['time'] ?? "",
+        time = map['time'] ?? 0,
         title = map['title'] ?? "",
         track = map["track"] ?? "",
         oral = map["oral"] ?? "",
-        abstract = map["abstract"] ?? "";
+        abs = map["abstract"] ?? "";
 
   Map<String, dynamic> toMap() {
     return {
@@ -55,7 +55,7 @@ class Presentation {
       "position": position,
       "email": email,
       "oral": oral,
-      "abstract": abstract,
+      "abstract": abs,
     };
   }
 }

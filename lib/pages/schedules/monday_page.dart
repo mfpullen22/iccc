@@ -7,15 +7,15 @@ class MondayPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-                  children: [
-                    Card(
-                      child: Text(schedule[0]["lastName"] +
-                          " - " +
-                          schedule[0]["time"] +
-                          " - " +
-                          schedule[0]["title"]),
-                    )
-                  ],
-                );
+      children: [
+        Card(
+          child: Text(schedule[0]["lastName"] +
+              " - " +
+              schedule[0]["time"].toString() +
+              " - " +
+              schedule[0]["title"]),
+        )
+      ],
+    );
   }
 }

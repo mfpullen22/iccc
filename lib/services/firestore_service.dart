@@ -23,6 +23,16 @@ class FirestoreService {
   }
 
   Stream<List<Presentation>> getPresentations(day) {
+    if (day == "0") {
+      return firestore
+          .collection("presentations")
+          .snapshots()
+          .map((snapshot) => snapshot.docs.map((doc) {
+                final d = doc.data();
+                final u = Presentation.fromMap(d);
+                return u;
+              }).toList());
+    }
     return firestore
         .collection("presentations")
         .where("day", isEqualTo: day)

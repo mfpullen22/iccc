@@ -37,7 +37,7 @@ class PresentersPage extends ConsumerWidget {
         ),
         body: StreamBuilder<List<Presentation>>(
             //stream: ref.read(databaseProvider)!.getPresenters(),
-            stream: ref.read(databaseProvider)!.getPresentations("10"),
+            stream: ref.read(databaseProvider)!.getPresentations("0"),
             builder: (context, snapshot) {
               if (snapshot.hasError) {
                 return const Center(
@@ -58,7 +58,7 @@ class PresentersPage extends ConsumerWidget {
                 var item = presenters[i].toMap();
                 presentationList.add(item);
                 if (lastNames.contains(item["lastName"])) {
-                  continue; 
+                  continue;
                 }
                 lastNames.add(item["lastName"]);
                 presentersList.add(item);

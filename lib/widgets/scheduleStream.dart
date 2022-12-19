@@ -39,16 +39,26 @@ class _ScheduleStreamState extends ConsumerState<ScheduleStream> {
             var item = presentations[i].toMap();
             presentationsList.add(item);
           }
-          presentationsList.sort(
+/*           presentationsList.sort(
             (a, b) => (a["day"]).compareTo(b["day"]),
-          );
+          ); */
 /*           Map<String, dynamic> intro =
               presentationsList.firstWhere((element) => element["time"] == "9"); */
-          List<Map<String, dynamic>> monSchedule = presentationsList.where((element) => element["day"] == "9").toList();
-          List<Map<String, dynamic>> tueSchedule = presentationsList.where((element) => element["day"] == "10").toList();
-          List<Map<String, dynamic>> wedSchedule = presentationsList.where((element) => element["day"] == "11").toList();
-          List<Map<String, dynamic>> thuSchedule = presentationsList.where((element) => element["day"] == "12").toList();
-          List<Map<String, dynamic>> friSchedule = presentationsList.where((element) => element["day"] == "13").toList();
+          List<Map<String, dynamic>> monSchedule = presentationsList
+              .where((element) => element["day"] == "9")
+              .toList();
+          List<Map<String, dynamic>> tueSchedule = presentationsList
+              .where((element) => element["day"] == "10")
+              .toList();
+          List<Map<String, dynamic>> wedSchedule = presentationsList
+              .where((element) => element["day"] == "11")
+              .toList();
+          List<Map<String, dynamic>> thuSchedule = presentationsList
+              .where((element) => element["day"] == "12")
+              .toList();
+          List<Map<String, dynamic>> friSchedule = presentationsList
+              .where((element) => element["day"] == "13")
+              .toList();
 
 /*           [
             presentationsList.firstWhere((element) => element["time"] == "9"),
@@ -65,13 +75,13 @@ class _ScheduleStreamState extends ConsumerState<ScheduleStream> {
             presentationsList
                 .firstWhere((element) => element["time"] == "1030"),
           ]; */
-          if(widget.day == "9") {
+          if (widget.day == "9") {
             return MondayPage(schedule: monSchedule);
-          } else if(widget.day == "10") {
+          } else if (widget.day == "10") {
             return MondayPage(schedule: tueSchedule);
-          } else if(widget.day == "11") {
+          } else if (widget.day == "11") {
             return MondayPage(schedule: wedSchedule);
-          } else if(widget.day == "12") {
+          } else if (widget.day == "12") {
             return MondayPage(schedule: thuSchedule);
           } else {
             return MondayPage(schedule: friSchedule);

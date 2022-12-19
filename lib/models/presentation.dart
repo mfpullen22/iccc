@@ -1,4 +1,4 @@
-import 'dart:ffi';
+//import 'dart:ffi';
 
 class Presentation {
   String firstName;
@@ -10,7 +10,7 @@ class Presentation {
   String day;
   int time;
   String title;
-  String track;
+  int track;
   String oral;
   String abs;
 
@@ -38,7 +38,7 @@ class Presentation {
         day = map['day'] ?? "",
         time = map['time'] ?? 0,
         title = map['title'] ?? "",
-        track = map["track"] ?? "",
+        track = map["track"] ?? 0,
         oral = map["oral"] ?? "",
         abs = map["abstract"] ?? "";
 

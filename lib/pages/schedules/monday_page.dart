@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:iccc_app/widgets/schedule_card.dart';
 
 class MondayPage extends StatelessWidget {
   final List<Map<String, dynamic>> schedule;
@@ -22,20 +23,8 @@ class MondayPage extends StatelessWidget {
 
     return Column(
       children: [
-        Card(
-          child: Text(morningSchedule[0]["lastName"] +
-              " - " +
-              morningSchedule[0]["time"].toString() +
-              " - " +
-              morningSchedule[0]["title"]),
-        ),
-        Card(
-          child: Text(eveningSchedule[0]["lastName"] +
-              " - " +
-              eveningSchedule[0]["time"].toString() +
-              " - " +
-              eveningSchedule[0]["title"]),
-        )
+        ScheduleCard(scheduleItem: morningSchedule[0]),
+        ScheduleCard(scheduleItem: eveningSchedule[0])
       ],
     );
   }

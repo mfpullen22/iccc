@@ -4,6 +4,7 @@ import "package:flutter/material.dart";
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iccc_app/models/presentation.dart';
 import 'package:iccc_app/pages/schedules/monday_page.dart';
+import 'package:iccc_app/pages/schedules/tuesday_page.dart';
 import 'package:iccc_app/providers.dart';
 
 class ScheduleStream extends ConsumerStatefulWidget {
@@ -78,7 +79,7 @@ class _ScheduleStreamState extends ConsumerState<ScheduleStream> {
           if (widget.day == "9") {
             return MondayPage(schedule: monSchedule);
           } else if (widget.day == "10") {
-            return MondayPage(schedule: tueSchedule);
+            return TuesdayPage(schedule: tueSchedule);
           } else if (widget.day == "11") {
             return MondayPage(schedule: wedSchedule);
           } else if (widget.day == "12") {

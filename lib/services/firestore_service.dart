@@ -3,7 +3,7 @@ import "package:iccc_app/models/message.dart";
 import 'package:iccc_app/models/presentation.dart';
 import '../models/chat.dart';
 import '../models/user_data.dart';
-import "../models/presenter.dart";
+//import "../models/presenter.dart";
 
 class FirestoreService {
   FirestoreService({required this.uid});
@@ -11,7 +11,7 @@ class FirestoreService {
 
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-  Stream<List<Presenter>> getPresenters() {
+/*   Stream<List<Presenter>> getPresenters() {
     return firestore
         .collection("presenters")
         .snapshots()
@@ -20,7 +20,7 @@ class FirestoreService {
               final u = Presenter.fromMap(d);
               return u;
             }).toList());
-  }
+  } */
 
   Stream<List<Presentation>> getPresentations(day) {
     if (day == "0") {

@@ -1,4 +1,4 @@
-class Presenter {
+/* class Presenter {
   String firstName;
   String lastName;
   String degree;
@@ -73,3 +73,4 @@ class Presenter {
         //"presentations": presentations,
       };*/
 }
+ */

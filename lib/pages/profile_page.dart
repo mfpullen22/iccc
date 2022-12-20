@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:flutter/services.dart';
 import 'package:iccc_app/widgets/bottom_navbar.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -21,6 +22,15 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Future<dynamic> getImage(String path) async {
+      try {
+        await rootBundle.load(path);
+        return path;
+      } catch (_) {
+        return null;
+      }
+    }
+
     final screenSize = MediaQuery.of(context).size;
     final presentations = [];
     for (var item in totalList) {
@@ -62,9 +72,25 @@ class ProfilePage extends StatelessWidget {
                     ]),
                 child: Column(
                   children: [
-                    ClipRRect(
-                        borderRadius: BorderRadius.circular(0),
-                        child: const Icon(Icons.account_circle, size: 200)),
+                    FutureBuilder(
+                        future: getImage("assets/img/$name.jpg"),
+                        builder: (context, snapshot) {
+                          if (!snapshot.hasData) {
+                            return ClipRRect(
+                                borderRadius: BorderRadius.circular(0),
+                                child: const Icon(Icons.account_circle,
+                                    size: 200));
+                          }
+                          return ClipRRect(
+                            borderRadius: BorderRadius.circular(50.0),
+                            child: Image.asset(
+                              "assets/img/$name.jpg",
+                              width: 100.0,
+                              height: 100.0,
+                              fit: BoxFit.cover,
+                            ),
+                          );
+                        }),
                     FittedBox(
                       fit: BoxFit.fitWidth,
                       child: Text(

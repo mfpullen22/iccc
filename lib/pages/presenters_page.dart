@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iccc_app/models/presentation.dart';
-import 'package:iccc_app/models/presenter.dart';
+//import 'package:iccc_app/models/presenter.dart';
 //import 'package:iccc_app/models/presenter.dart';
 import 'package:iccc_app/pages/profile_page.dart';
 import 'package:iccc_app/providers.dart';
@@ -73,7 +73,7 @@ class PresentersPage extends ConsumerWidget {
                   //itemCount: presenters.length,
                   itemCount: presentersList.length,
                   itemBuilder: (context, index) {
-                    final presenter = presenters[index].toMap();
+                    //final presenter = presenters[index].toMap();
                     return Column(
                       children: [
                         Card(

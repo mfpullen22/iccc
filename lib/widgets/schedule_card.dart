@@ -14,6 +14,7 @@ class ScheduleCard extends StatelessWidget {
         ':' +
         timeString.substring(timeString.length - 2);
     return Card(
+      elevation: 10,
       child: Column(
         children: [
           ListTile(

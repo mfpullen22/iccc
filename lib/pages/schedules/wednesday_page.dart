@@ -2,9 +2,9 @@ import "package:flutter/material.dart";
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iccc_app/widgets/schedule_card.dart';
 
-class TuesdayPage extends StatelessWidget {
+class WednesdayPage extends StatelessWidget {
   final List<Map<String, dynamic>> schedule;
-  const TuesdayPage({required this.schedule, Key? key}) : super(key: key);
+  const WednesdayPage({required this.schedule, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class TuesdayPage extends StatelessWidget {
     return ListView(
       padding: const EdgeInsets.all(10),
       children: [
-        Text("Basic Science - Species and Phenotypes",
+        Text("Basic Science - Cell Biology and Development",
             textAlign: TextAlign.center,
             style:
                 GoogleFonts.raleway(fontSize: 20, fontWeight: FontWeight.bold)),
@@ -54,7 +54,7 @@ class TuesdayPage extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 10),
-        Text("Clinical Science - CrAg Screening",
+        Text("Clinical Science - Disease Manifestations",
             textAlign: TextAlign.center,
             style:
                 GoogleFonts.raleway(fontSize: 20, fontWeight: FontWeight.bold)),
@@ -63,39 +63,8 @@ class TuesdayPage extends StatelessWidget {
           child: Column(
             children: [
               ScheduleCard(scheduleItem: morningScheduleTrack2[0]),
-              Card(
-                elevation: 10,
-                child: ListTile(
-                  title: Text("Panel Discussion: Optimizing Preemptive Therapy",
-                      style: GoogleFonts.raleway(fontWeight: FontWeight.bold)),
-                  leading: Text("8:45",
-                      style: GoogleFonts.raleway(fontWeight: FontWeight.bold)),
-                  subtitle: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text("Moderators",
-                          style: GoogleFonts.raleway(
-                              fontWeight: FontWeight.bold,
-                              decoration: TextDecoration.underline)),
-                      Text("Tom Harrison, David Boulware",
-                          style: GoogleFonts.raleway()),
-                      const SizedBox(height: 5),
-                      Text("Panelists",
-                          style: GoogleFonts.raleway(
-                              fontWeight: FontWeight.bold,
-                              decoration: TextDecoration.underline)),
-                      Text("Sile Molloy (EFFECT Trial)",
-                          style: GoogleFonts.raleway()),
-                      Text("Radha Rajasingham (ACACIA Trial)",
-                          style: GoogleFonts.raleway()),
-                      Text("Elizabeth Nalintya (ENCORE Trial)",
-                          style: GoogleFonts.raleway()),
-                      Text("Tshiama Miriam Mwamba (NICD)",
-                          style: GoogleFonts.raleway())
-                    ],
-                  ),
-                ),
-              ),
+              ScheduleCard(scheduleItem: morningScheduleTrack2[1]),
+              ScheduleCard(scheduleItem: morningScheduleTrack2[2]),
               const ScheduleCard(scheduleItem: {
                 "firstName": "Break",
                 "lastName": "",
@@ -103,12 +72,12 @@ class TuesdayPage extends StatelessWidget {
                 "title": "",
                 "time": 1000
               }),
-              ScheduleCard(scheduleItem: morningScheduleTrack2[1]),
+              ScheduleCard(scheduleItem: morningScheduleTrack2[3]),
               Card(
                 elevation: 10,
                 child: ListTile(
                   title: Text(
-                      "Panel Discussion: Programmatic and Implementation Issues on CrAg Screening",
+                      "Panel Discussion: HIV Negative Cryptococcal Meningitis",
                       style: GoogleFonts.raleway(fontWeight: FontWeight.bold)),
                   leading: Text("10:45",
                       style: GoogleFonts.raleway(fontWeight: FontWeight.bold)),
@@ -119,24 +88,19 @@ class TuesdayPage extends StatelessWidget {
                           style: GoogleFonts.raleway(
                               fontWeight: FontWeight.bold,
                               decoration: TextDecoration.underline)),
-                      Text("Tom Chiller, David Meya",
-                          style: GoogleFonts.raleway()),
+                      Text("Olivier Lorthorlary", style: GoogleFonts.raleway()),
                       const SizedBox(height: 5),
                       Text("Panelists",
                           style: GoogleFonts.raleway(
                               fontWeight: FontWeight.bold,
                               decoration: TextDecoration.underline)),
-                      Text("Katy Godfrey (PEPFAR)",
+                      Text("Peter Pappas (MSG and UAB perspective)",
                           style: GoogleFonts.raleway()),
-                      Text("Nelesh Govender (South Africa)",
+                      Text("Andrej Spec (Cryptococcus beyond HIV)",
                           style: GoogleFonts.raleway()),
-                      Text("Elizabeth Nalintya (Uganda)",
+                      Text("Peter Williamson (Inflammatory syndromes)",
                           style: GoogleFonts.raleway()),
-                      Text("Master Chisale (Malawi)",
-                          style: GoogleFonts.raleway()),
-                      Text("Boniface Ocora (Lira, Uganda)",
-                          style: GoogleFonts.raleway()),
-                      Text("Tafese Beyene Tufa (Ethiopia)",
+                      Text("Olivier Paccoud (HIV- Cryptococcus in France)",
                           style: GoogleFonts.raleway()),
                     ],
                   ),
@@ -162,7 +126,7 @@ class TuesdayPage extends StatelessWidget {
                       style: GoogleFonts.raleway(fontWeight: FontWeight.bold)),
                   leading: Text("13:00 - 14:00",
                       style: GoogleFonts.raleway(fontWeight: FontWeight.bold)),
-                  subtitle: Text("CrAg Screening Working Group",
+                  subtitle: Text("HIV-negative Working Group",
                       style: GoogleFonts.raleway(fontSize: 14)),
                 ),
               )
@@ -170,7 +134,7 @@ class TuesdayPage extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 10),
-        Text("Plenary Session - Treatment Strategies",
+        Text("Plenary Session - Understanding and Treating Disease",
             textAlign: TextAlign.center,
             style:
                 GoogleFonts.raleway(fontSize: 20, fontWeight: FontWeight.bold)),
@@ -181,16 +145,20 @@ class TuesdayPage extends StatelessWidget {
               ScheduleCard(scheduleItem: eveningSchedule[0]),
               ScheduleCard(scheduleItem: eveningSchedule[1]),
               ScheduleCard(scheduleItem: eveningSchedule[2]),
+              const ScheduleCard(scheduleItem: {
+                "firstName": "Break",
+                "lastName": "",
+                "degree": "",
+                "title": "",
+                "time": 1530
+              }),
               ScheduleCard(scheduleItem: eveningSchedule[3]),
               ScheduleCard(scheduleItem: eveningSchedule[4]),
+              ScheduleCard(scheduleItem: eveningSchedule[5]),
             ],
           ),
         ),
         const SizedBox(height: 10),
-        Text("Evening Poster Session",
-            textAlign: TextAlign.center,
-            style:
-                GoogleFonts.raleway(fontSize: 20, fontWeight: FontWeight.bold)),
         Container(
           color: const Color.fromRGBO(117, 16, 62, 1),
           child: Column(
@@ -198,17 +166,18 @@ class TuesdayPage extends StatelessWidget {
               Card(
                 elevation: 10,
                 child: ListTile(
-                  title: Text("Poster Flash Talks",
+                  title: Text("Optional Boat Ride on Lake Victoria",
                       style: GoogleFonts.raleway(fontWeight: FontWeight.bold)),
-                  leading: Text("16:45 - 18:00",
+                  leading: Text("17:00 - 18:30",
                       style: GoogleFonts.raleway(fontWeight: FontWeight.bold)),
                 ),
               )
             ],
           ),
         ),
+        const SizedBox(height: 10),
         Container(
-          color: const Color.fromRGBO(117, 16, 62, 1),
+          color: const Color.fromRGBO(0, 192, 225, 1),
           child: Column(
             children: [
               Card(

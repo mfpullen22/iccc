@@ -3,8 +3,11 @@
 import "package:flutter/material.dart";
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iccc_app/models/presentation.dart';
+import 'package:iccc_app/pages/schedules/friday_page.dart';
 import 'package:iccc_app/pages/schedules/monday_page.dart';
+import 'package:iccc_app/pages/schedules/thursday_page.dart';
 import 'package:iccc_app/pages/schedules/tuesday_page.dart';
+import 'package:iccc_app/pages/schedules/wednesday_page.dart';
 import 'package:iccc_app/providers.dart';
 
 class ScheduleStream extends ConsumerStatefulWidget {
@@ -81,11 +84,11 @@ class _ScheduleStreamState extends ConsumerState<ScheduleStream> {
           } else if (widget.day == "10") {
             return TuesdayPage(schedule: tueSchedule);
           } else if (widget.day == "11") {
-            return MondayPage(schedule: wedSchedule);
+            return WednesdayPage(schedule: wedSchedule);
           } else if (widget.day == "12") {
-            return MondayPage(schedule: thuSchedule);
+            return ThursdayPage(schedule: thuSchedule);
           } else {
-            return MondayPage(schedule: friSchedule);
+            return FridayPage(schedule: friSchedule);
           }
         });
   }

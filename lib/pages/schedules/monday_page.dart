@@ -30,7 +30,7 @@ class MondayPage extends StatelessWidget {
             style:
                 GoogleFonts.raleway(fontSize: 20, fontWeight: FontWeight.bold)),
         Container(
-          color: const Color.fromRGBO(208, 158, 166, 1),
+          color: const Color.fromRGBO(117, 16, 62, 1),
           child: Column(
             children: [
               ScheduleCard(scheduleItem: morningSchedule[0]),
@@ -48,10 +48,11 @@ class MondayPage extends StatelessWidget {
             style:
                 GoogleFonts.raleway(fontSize: 20, fontWeight: FontWeight.bold)),
         Container(
-          color: const Color.fromRGBO(209, 231, 224, 1),
+          color: const Color.fromRGBO(0, 192, 225, 1),
           child: Column(
             children: [
               Card(
+                elevation: 10,
                 child: ListTile(
                   title: Text("Treatment Frontiers",
                       style: GoogleFonts.raleway(fontWeight: FontWeight.bold)),
@@ -76,7 +77,7 @@ class MondayPage extends StatelessWidget {
             style:
                 GoogleFonts.raleway(fontSize: 20, fontWeight: FontWeight.bold)),
         Container(
-          color: const Color.fromRGBO(208, 158, 166, 1),
+          color: const Color.fromRGBO(117, 16, 62, 1),
           child: Column(
             children: [
               ScheduleCard(scheduleItem: eveningSchedule[0]),
@@ -102,7 +103,7 @@ class MondayPage extends StatelessWidget {
             style:
                 GoogleFonts.raleway(fontSize: 20, fontWeight: FontWeight.bold)),
         Container(
-          color: const Color.fromRGBO(209, 231, 224, 1),
+          color: const Color.fromRGBO(0, 192, 225, 1),
           child: Column(
             children: [
               const ScheduleCard(

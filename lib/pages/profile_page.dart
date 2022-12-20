@@ -9,6 +9,7 @@ class ProfilePage extends StatelessWidget {
   final String position;
   final String email;
   final String title;
+  final String imageName;
   final List<Map<String, dynamic>> totalList;
   const ProfilePage(
       {required this.name,
@@ -17,6 +18,7 @@ class ProfilePage extends StatelessWidget {
       required this.email,
       required this.title,
       required this.totalList,
+      required this.imageName,
       Key? key})
       : super(key: key);
 
@@ -73,7 +75,7 @@ class ProfilePage extends StatelessWidget {
                 child: Column(
                   children: [
                     FutureBuilder(
-                        future: getImage("assets/img/$name.jpg"),
+                        future: getImage("assets/img/$imageName.jpg"),
                         builder: (context, snapshot) {
                           if (!snapshot.hasData) {
                             return ClipRRect(
@@ -84,7 +86,7 @@ class ProfilePage extends StatelessWidget {
                           return ClipRRect(
                             borderRadius: BorderRadius.circular(50.0),
                             child: Image.asset(
-                              "assets/img/$name.jpg",
+                              "assets/img/$imageName.jpg",
                               width: 100.0,
                               height: 100.0,
                               fit: BoxFit.cover,
@@ -94,7 +96,7 @@ class ProfilePage extends StatelessWidget {
                     FittedBox(
                       fit: BoxFit.fitWidth,
                       child: Text(
-                        "$name, $title",
+                        "$name $title",
                         style: const TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.bold,

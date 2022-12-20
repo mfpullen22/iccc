@@ -100,7 +100,9 @@ class PresentersPage extends ConsumerWidget {
                                           ["position"],
                                       email: presentersList[index]["email"],
                                       title: presentersList[index]["degree"],
-                                      totalList: presentationList),
+                                      totalList: presentationList,
+                                      imageName: presentersList[index]
+                                          ["lastName"]),
                                 ),
                               );
                             },

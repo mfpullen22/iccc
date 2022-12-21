@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iccc_app/models/presentation.dart';
+import 'package:iccc_app/pages/abstract_details_page.dart';
 import 'package:iccc_app/providers.dart';
 import 'package:iccc_app/widgets/bottom_navbar.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -62,8 +63,8 @@ class AbstractsPage extends ConsumerWidget {
                         Card(
                           elevation: 5,
                           color: presentationList[index]["oral"] == "y"
-                              ? Color.fromRGBO(209, 231, 224, 1)
-                              : Color.fromRGBO(208, 158, 166, 1),
+                              ? const Color.fromRGBO(209, 231, 224, 1)
+                              : const Color.fromRGBO(208, 158, 166, 1),
                           child: ListTile(
                             leading: presentationList[index]["oral"] == "y"
                                 ? Text("Oral",
@@ -84,6 +85,25 @@ class AbstractsPage extends ConsumerWidget {
                                     fontSize: 16, fontWeight: FontWeight.bold)),
                             subtitle: Text(presentationList[index]["title"],
                                 style: GoogleFonts.raleway(fontSize: 14)),
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => AbstractDetailsPage(
+                                    name: presentationList[index]["firstName"] +
+                                        " " +
+                                        presentationList[index]["lastName"],
+                                    university: presentationList[index]
+                                        ["employer"],
+                                    title: presentationList[index]["title"],
+                                    abs: presentationList[index]["abs"],
+                                    oral: presentationList[index]["oral"],
+                                    day: presentationList[index]["day"],
+                                    time: presentationList[index]["time"],
+                                  ),
+                                ),
+                              );
+                            },
                           ),
                         ),
                       ],

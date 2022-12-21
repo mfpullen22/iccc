@@ -1,5 +1,4 @@
 import "package:flutter/material.dart";
-import 'package:iccc_app/pages/abstract_details_page.dart';
 import 'package:iccc_app/pages/abstracts_page.dart';
 import 'package:iccc_app/pages/chat_main_page.dart';
 import 'package:iccc_app/pages/home_page.dart';

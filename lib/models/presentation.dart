@@ -40,7 +40,7 @@ class Presentation {
         title = map['title'] ?? "",
         track = map["track"] ?? 0,
         oral = map["oral"] ?? "",
-        abs = map["abstract"] ?? "";
+        abs = map["abs"] ?? "";
 
   Map<String, dynamic> toMap() {
     return {
@@ -55,7 +55,7 @@ class Presentation {
       "position": position,
       "email": email,
       "oral": oral,
-      "abstract": abs,
+      "abs": abs,
     };
   }
 }

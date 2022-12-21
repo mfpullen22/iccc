@@ -75,7 +75,7 @@ class ProfilePage extends StatelessWidget {
                 child: Column(
                   children: [
                     FutureBuilder(
-                        future: getImage("assets/img/$imageName.jpg"),
+                        future: getImage("assets/img/headshots/$imageName.jpg"),
                         builder: (context, snapshot) {
                           if (!snapshot.hasData) {
                             return ClipRRect(
@@ -86,9 +86,9 @@ class ProfilePage extends StatelessWidget {
                           return ClipRRect(
                             borderRadius: BorderRadius.circular(50.0),
                             child: Image.asset(
-                              "assets/img/$imageName.jpg",
-                              width: 100.0,
-                              height: 100.0,
+                              "assets/img/headshots/$imageName.jpg",
+                              width: 150.0,
+                              height: 150.0,
                               fit: BoxFit.cover,
                             ),
                           );
@@ -104,15 +104,12 @@ class ProfilePage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    FittedBox(
-                      fit: BoxFit.fitWidth,
-                      child: Text(
-                        position,
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          fontSize: 20,
-                          color: Colors.grey,
-                        ),
+                    Text(
+                      position,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        fontSize: 20,
+                        color: Colors.grey,
                       ),
                     ),
                     FittedBox(

@@ -30,7 +30,6 @@ class AbstractDetailsPage extends StatelessWidget {
           title: Text("Abstract Details",
               style: GoogleFonts.raleway(
                   fontSize: 24, fontWeight: FontWeight.bold)),
-          automaticallyImplyLeading: false,
         ),
         body: Center(
           child: Column(

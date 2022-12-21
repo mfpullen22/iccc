@@ -104,12 +104,15 @@ class ProfilePage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Text(
-                      position,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        fontSize: 20,
-                        color: Colors.grey,
+                    FittedBox(
+                      fit: BoxFit.fitWidth,
+                      child: Text(
+                        position,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontSize: 20,
+                          color: Colors.grey,
+                        ),
                       ),
                     ),
                     FittedBox(

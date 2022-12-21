@@ -28,7 +28,8 @@ class SetProfilePage extends ConsumerWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text("Before you can chat, we need to know what to call you!",
+              Text(
+                  "Before you can chat, we need to know what to call you! (Please include FIRST and LAST names)",
                   textAlign: TextAlign.center,
                   style: GoogleFonts.raleway(
                       fontSize: 24, fontWeight: FontWeight.bold)),

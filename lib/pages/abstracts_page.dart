@@ -68,8 +68,8 @@ class AbstractsPage extends ConsumerWidget {
                         Card(
                           elevation: 5,
                           color: presentationList[index]["oral"] == "y"
-                              ? const Color.fromRGBO(209, 231, 224, 1)
-                              : const Color.fromRGBO(208, 158, 166, 1),
+                              ? const Color.fromRGBO(0, 165, 255, 1)
+                              : const Color.fromRGBO(209, 231, 224, 1),
                           child: ListTile(
                             leading: presentationList[index]["oral"] == "y"
                                 ? Text("Oral",

@@ -88,14 +88,11 @@ class AbstractDetailsPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 oral == "y"
-                    ? Column(
-                        children: [
-                          Text("January $day - $formattedTime",
-                              style: GoogleFonts.raleway(fontSize: 16)),
-                          const SizedBox(height: 10),
-                        ],
-                      )
-                    : Container(),
+                    ? Text("Oral Presentation: January $day - $formattedTime",
+                        style: GoogleFonts.raleway(fontSize: 16))
+                    : Text("Poster Presentation",
+                        style: GoogleFonts.raleway(fontSize: 16)),
+                const SizedBox(height: 10),
                 Text(abs, style: GoogleFonts.raleway(fontSize: 14)),
               ],
             ),

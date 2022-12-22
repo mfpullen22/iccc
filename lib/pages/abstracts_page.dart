@@ -50,6 +50,11 @@ class AbstractsPage extends ConsumerWidget {
                 if (item["firstName"] == "TBD") {
                   continue;
                 }
+                if (item["title"] == "Introduction" ||
+                    item["title"] == "Panelist" ||
+                    item["title"] == "Moderator") {
+                  continue;
+                }
                 presentationList.add(item);
               }
               presentationList.sort(
@@ -69,11 +74,11 @@ class AbstractsPage extends ConsumerWidget {
                             leading: presentationList[index]["oral"] == "y"
                                 ? Text("Oral",
                                     style: GoogleFonts.raleway(
-                                        fontSize: 16,
+                                        fontSize: 13,
                                         fontWeight: FontWeight.bold))
                                 : Text("Poster",
                                     style: GoogleFonts.raleway(
-                                        fontSize: 16,
+                                        fontSize: 13,
                                         fontWeight: FontWeight.bold)),
                             title: Text(
                                 presentationList[index]["firstName"] +
@@ -100,6 +105,13 @@ class AbstractsPage extends ConsumerWidget {
                                     oral: presentationList[index]["oral"],
                                     day: presentationList[index]["day"],
                                     time: presentationList[index]["time"],
+                                    degree: presentationList[index]["degree"],
+                                    imageName: presentationList[index]
+                                        ["lastName"],
+                                    email: presentationList[index]["email"],
+                                    position: presentationList[index]
+                                        ["position"],
+                                    totalList: presentationList,
                                   ),
                                 ),
                               );

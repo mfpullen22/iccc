@@ -77,6 +77,7 @@ class PresentersPage extends ConsumerWidget {
                     return Column(
                       children: [
                         Card(
+                          elevation: 10,
                           child: ListTile(
                             title: Text(
                                 presentersList[index]["firstName"] +
@@ -100,7 +101,7 @@ class PresentersPage extends ConsumerWidget {
                                               ["position"] ??
                                           "",
                                       email: presentersList[index]["email"],
-                                      title: presentersList[index]["degree"],
+                                      degree: presentersList[index]["degree"],
                                       totalList: presentationList,
                                       imageName: presentersList[index]
                                           ["lastName"]),

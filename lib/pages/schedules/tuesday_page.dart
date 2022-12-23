@@ -126,8 +126,6 @@ class TuesdayPage extends StatelessWidget {
                           style: GoogleFonts.raleway(
                               fontWeight: FontWeight.bold,
                               decoration: TextDecoration.underline)),
-                      Text("Katy Godfrey (PEPFAR)",
-                          style: GoogleFonts.raleway()),
                       Text("Nelesh Govender (South Africa)",
                           style: GoogleFonts.raleway()),
                       Text("Elizabeth Nalintya (Uganda)",

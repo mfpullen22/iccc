@@ -96,8 +96,6 @@ class WednesdayPage extends StatelessWidget {
                               decoration: TextDecoration.underline)),
                       Text("Peter Pappas (MSG and UAB perspective)",
                           style: GoogleFonts.raleway()),
-                      Text("Andrej Spec (Cryptococcus beyond HIV)",
-                          style: GoogleFonts.raleway()),
                       Text("Peter Williamson (Inflammatory syndromes)",
                           style: GoogleFonts.raleway()),
                       Text("Olivier Paccoud (HIV- Cryptococcus in France)",

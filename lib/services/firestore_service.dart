@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:iccc_app/models/faq.dart';
 import "package:iccc_app/models/message.dart";
 import 'package:iccc_app/models/presentation.dart';
 import '../models/chat.dart';
@@ -40,6 +41,17 @@ class FirestoreService {
         .map((snapshot) => snapshot.docs.map((doc) {
               final d = doc.data();
               final u = Presentation.fromMap(d);
+              return u;
+            }).toList());
+  }
+
+  Stream<List<FAQ>> getFAQ() {
+    return firestore
+        .collection("faq")
+        .snapshots()
+        .map((snapshot) => snapshot.docs.map((doc) {
+              final d = doc.data();
+              final u = FAQ.fromMap(d);
               return u;
             }).toList());
   }

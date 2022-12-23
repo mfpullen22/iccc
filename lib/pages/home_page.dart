@@ -71,7 +71,7 @@ class HomePage extends StatelessWidget {
                 const SizedBox(height: 20),
                 const NavCard(
                     route: ConferenceInfo(),
-                    title: "Conference Info",
+                    title: "Account and Conference Info",
                     widthMod: 0.95),
               ],
             ),

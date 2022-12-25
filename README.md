@@ -1,6 +1,6 @@
 # ICCC 2023
 
-<img src="./assets/img/iccc_logo.webp" width="75">
+<img src="./assets/img/iccc_logo.webp" width="75%">
 
 This app is built both for the 2023 ICCC conference, as well as to act as a living repository for information related to Cryptococcal research, future meetings of colleagues, and to disseminate information important to the field at large. 
 

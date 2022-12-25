@@ -18,7 +18,7 @@ Inside the current version of this app, you will find:
 ![Screenshot 1](/assets/screenshot1.png | width=100)
 ![Screenshot 2](/assets/screenshot2.png | width=100)
 ![Screenshot 3](/assets/screenshot3.png | width=100)
-<img src="./assets/screenshot1.png" width="100>
+<img src="./assets/screenshot1.png" width="100">
 
 ## Privacy Policy
 

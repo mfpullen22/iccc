@@ -15,9 +15,9 @@ Inside the current version of this app, you will find:
 
 **Note, if after creating an account in the app you ever decide you want your account deleted, simply e-mail us at matthew.pullen@gmail.com. We will delete all your data within 24-48 hours and send a confirmatory e-mail once this process is completed!**
 
-![Screenshot 1](/assets/screenshot1.png)
-![Screenshot 2](/assets/screenshot2.png)
-![Screenshot 3](/assets/screenshot3.png)
+![Screenshot 1](/assets/screenshot1.png | width=100)
+![Screenshot 2](/assets/screenshot2.png | width=100)
+![Screenshot 3](/assets/screenshot3.png | width=100)
 
 ## Privacy Policy
 

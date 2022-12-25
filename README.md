@@ -4,9 +4,13 @@ This app is built both for the 2023 ICCC conference, as well as to act as a livi
 
 Inside the current version of this app, you will find:
 *The full conference schedule (Jan 7 - 13, 2023)
+
 *A list of presenters (both oral and poster presentations) with personal profiles for each
+
 *Complete abstracts for each presentation (both oral and posters)
+
 *Live Chat, allowing you to send and receive messages with others who have signed up to use the app (as well as with the moderator of the presentations)
+
 *Account and Conference FAQs
 
 **Note, if after creating an account in the app you ever decide you want your account deleted, simply e-mail us at matthew.pullen@gmail.com. We will delete all your data within 24-48 hours and send a confirmatory e-mail once this process is completed!**

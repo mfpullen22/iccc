@@ -1,5 +1,5 @@
 name: iccc_app
-description: A new Flutter project.
+description: A companion app for the ICCC 2023 conference, as well as an ongoing resource for the cryptococcal research community.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -49,6 +49,7 @@ dependencies:
   provider: ^6.0.3
   accordion: ^2.5.1
   url_launcher: ^6.1.7
+  
 
 dev_dependencies:
   flutter_test:
@@ -60,10 +61,15 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+  flutter_launcher_icons: "^0.11.0"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
-
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icon/icon.png"
+  min_sdk_android: 21
 # The following section is specific to Flutter packages.
 flutter:
 

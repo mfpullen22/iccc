@@ -1,4 +1,4 @@
-package com.example.iccc_app
+package com.iccc_app
 
 import io.flutter.embedding.android.FlutterActivity
 

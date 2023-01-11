@@ -47,7 +47,7 @@ class AbstractsPage extends ConsumerWidget {
               List<Map<String, dynamic>> presentationList = [];
               for (var i = 0; i < presentations.length; i++) {
                 var item = presentations[i].toMap();
-                if (item["firstName"] == "TBD") {
+                if (item["skip"] == "y") {
                   continue;
                 }
                 if (item["title"] == "Introduction" ||

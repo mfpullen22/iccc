@@ -2,6 +2,7 @@
 
 import "package:flutter/material.dart";
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+//import 'package:iccc_app/models/location.dart';
 import 'package:iccc_app/models/presentation.dart';
 import 'package:iccc_app/pages/schedules/friday_page.dart';
 import 'package:iccc_app/pages/schedules/monday_page.dart';
@@ -23,6 +24,35 @@ class ScheduleStream extends ConsumerStatefulWidget {
 class _ScheduleStreamState extends ConsumerState<ScheduleStream> {
   @override
   Widget build(BuildContext context) {
+/*     List<Map<String, dynamic>> monLocs = [];
+    List<Map<String, dynamic>> tuesLocs = [];
+    List<Map<String, dynamic>> wedLocs = [];
+    List<Map<String, dynamic>> thuLocs = [];
+    List<Map<String, dynamic>> friLocs = [];
+    List<Map<String, dynamic>> allLocs = [];
+    Stream<List<Location>> locationsDaily = ref.read(databaseProvider)!.getLocations(widget.day); 
+    locationsDaily.listen((data) {
+      data.forEach((map) {
+        allLocs.add(map.toMap());
+      });
+      allLocs.forEach((element) {
+        if(element["day"] == "9") {
+          monLocs.add(element);
+        }
+        if(element["day"] == "10") {
+          tuesLocs.add(element);
+        }
+        if(element["day"] == "11") {
+          wedLocs.add(element);
+        }
+        if(element["day"] == "12") {
+          thuLocs.add(element);
+        }
+        if(element["day"] == "13") {
+          friLocs.add(element);
+        }
+      });
+    }); */
     return StreamBuilder<List<Presentation>>(
         stream: ref.read(databaseProvider)?.getPresentations(widget.day),
         builder: (context, snapshot) {

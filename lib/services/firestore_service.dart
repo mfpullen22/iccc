@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:iccc_app/models/faq.dart';
+import 'package:iccc_app/models/location.dart';
 import "package:iccc_app/models/message.dart";
 import 'package:iccc_app/models/presentation.dart';
 import '../models/chat.dart';
@@ -26,7 +27,7 @@ class FirestoreService {
   Stream<List<Presentation>> getPresentations(day) {
     if (day == "0") {
       return firestore
-          .collection("presentations")
+          .collection("presentationsUpdated")
           .snapshots()
           .map((snapshot) => snapshot.docs.map((doc) {
                 final d = doc.data();
@@ -35,12 +36,24 @@ class FirestoreService {
               }).toList());
     }
     return firestore
-        .collection("presentations")
+        .collection("presentationsUpdated")
         .where("day", isEqualTo: day)
         .snapshots()
         .map((snapshot) => snapshot.docs.map((doc) {
               final d = doc.data();
               final u = Presentation.fromMap(d);
+              return u;
+            }).toList());
+  }
+
+  Stream<List<Location>> getLocations(day) {
+    return firestore
+        .collection("locations")
+        .where("day", isEqualTo: day)
+        .snapshots()
+        .map((snapshot) => snapshot.docs.map((doc) {
+              final d = doc.data();
+              final u = Location.fromMap(d);
               return u;
             }).toList());
   }

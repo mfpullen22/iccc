@@ -1,3 +1,11 @@
+// ignore_for_file: use_build_context_synchronously, no_leading_underscores_for_local_identifiers
+
+//import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_email_sender/flutter_email_sender.dart';
+//import 'package:firebase_core/firebase_core.dart';
+import 'package:iccc_app/pages/auth/sign_in_page.dart';
+//import 'package:iccc_app/services/firestore_service.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:accordion/accordion.dart';
 import 'package:accordion/controllers.dart';
@@ -7,6 +15,7 @@ import 'package:iccc_app/models/faq.dart';
 import 'package:iccc_app/providers.dart';
 import 'package:iccc_app/widgets/bottom_navbar.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 
 class ConferenceInfo extends ConsumerWidget {
   const ConferenceInfo({Key? key}) : super(key: key);
@@ -20,6 +29,63 @@ class ConferenceInfo extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
+    var user = FirebaseAuth.instance.currentUser!;
+    deleteAccount() {
+      final Email email = Email(
+              body: 'PLEASE DELETE MESSAGES FOR: ${user.displayName}, ${user.email}, ${user.uid})',
+              subject: 'ACCOUNT DELETED',
+              recipients: ['matthew.pullen@gmail.com'],
+              isHTML: false,
+            );
+
+      FlutterEmailSender.send(email);
+      FirebaseAuth.instance.currentUser!.delete();
+
+      Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => const SignInPage()));
+      }
+
+    Future<void> _showAlertDialog() {
+      return showDialog<void>(
+        context :context,
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text("DELETE ACCOUNT?"),
+            content: SingleChildScrollView(
+              child: ListBody(
+                children: const [
+                  Text("Click DELETE to delete your account."),
+                  Text("This will also automatically send an e-mail to our team, who will delete all your messages (sent and received) within 24 hours and send a confirmation e-mail to the address you registered with."),
+              ],
+            ),
+          ),
+            actions: [
+              ElevatedButton(onPressed: deleteAccount, child: const Text("DELETE")),
+              ElevatedButton(onPressed: () {Navigator.of(context).pop();}, child: const Text("CANCEL"))
+            ]);
+        }
+         );
+    }
+
+
+    //FirebaseFirestore firestore = FirebaseFirestore.instance;
+   /*  deleteDocuments() async {
+      
+      final query = await firestore.collection("chats");
+      //.where("myName" == user.displayName || "otherName" == user.displayName);
+
+      //final documents = await query.get();
+      
+      //documents.documents.forEach((doc) => doc.reference.delete());
+      final chats = await FirestoreService(uid: user.uid).getChats();
+      final lenChat = await chats.length;
+
+      for(var i = 0; i < lenChat; i++) {
+        if chats[i]
+      }
+    } */
+
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -92,7 +158,207 @@ class ConferenceInfo extends ConsumerWidget {
                     ),
                     headerBackgroundColor: Colors.black,
                     headerBackgroundColorOpened: Colors.blueAccent,
-                    header: Text("Account Questions", style: _headerStyle),
+                    header: Text("Travel Questions", style: _headerStyle),
+                    contentHorizontalPadding: 20,
+                    contentBorderWidth: 1,
+                    content: Accordion(
+                      maxOpenSections: 1,
+                      headerBackgroundColorOpened: Colors.blueGrey,
+                      headerPadding: const EdgeInsets.symmetric(
+                          vertical: 7, horizontal: 15),
+                      children: List.generate(
+                        travelQuestions.length,
+                        (index) {
+                          return AccordionSection(
+                              isOpen: false,
+                              leftIcon: const Icon(Icons.insights_rounded,
+                                  color: Colors.white),
+                              headerBackgroundColor: Colors.black38,
+                              headerBackgroundColorOpened: Colors.black54,
+                              header: Text(travelQuestions[index]["question"],
+                                  style: _headerStyle),
+                              content: Text(travelQuestions[index]["answer"],
+                                  style: _contentStyle));
+                        },
+                      ),
+                    ),
+                  ),
+                  AccordionSection(
+                    isOpen: false,
+                    leftIcon: const Icon(
+                      Icons.insights_rounded,
+                      color: Colors.white,
+                    ),
+                    headerBackgroundColor: Colors.black,
+                    headerBackgroundColorOpened: Colors.blueAccent,
+                    header: Text("Conference Questions", style: _headerStyle),
+                    contentHorizontalPadding: 20,
+                    contentBorderWidth: 1,
+                    content: Accordion(
+                      maxOpenSections: 1,
+                      headerBackgroundColorOpened: Colors.blueGrey,
+                      headerPadding: const EdgeInsets.symmetric(
+                          vertical: 7, horizontal: 15),
+                      children: List.generate(
+                        conferenceQuestions.length,
+                        (index) {
+                          return AccordionSection(
+                              isOpen: false,
+                              leftIcon: const Icon(Icons.insights_rounded,
+                                  color: Colors.white),
+                              headerBackgroundColor: Colors.black38,
+                              headerBackgroundColorOpened: Colors.black54,
+                              header: Text(
+                                  conferenceQuestions[index]["question"],
+                                  style: _headerStyle),
+                              content: Text(
+                                  conferenceQuestions[index]["answer"],
+                                  style: _contentStyle));
+                        },
+                      ),
+                    ),
+                  ),
+                  AccordionSection(
+                    isOpen: false,
+                    leftIcon: const Icon(
+                      Icons.insights_rounded,
+                      color: Colors.white,
+                    ),
+                    headerBackgroundColor: Colors.black,
+                    headerBackgroundColorOpened: Colors.blueAccent,
+                    header: Text("Venue Questions", style: _headerStyle),
+                    contentHorizontalPadding: 20,
+                    contentBorderWidth: 1,
+                    content: Accordion(
+                      maxOpenSections: 1,
+                      headerBackgroundColorOpened: Colors.blueGrey,
+                      headerPadding: const EdgeInsets.symmetric(
+                          vertical: 7, horizontal: 15),
+                      children: List.generate(
+                        venueQuestions.length,
+                        (index) {
+                          return AccordionSection(
+                              isOpen: false,
+                              leftIcon: const Icon(Icons.insights_rounded,
+                                  color: Colors.white),
+                              headerBackgroundColor: Colors.black38,
+                              headerBackgroundColorOpened: Colors.black54,
+                              header: Text(venueQuestions[index]["question"],
+                                  style: _headerStyle),
+                              content: Text(venueQuestions[index]["answer"],
+                                  style: _contentStyle));
+                        },
+                      ),
+                    ),
+                  ),
+                  AccordionSection(
+                    isOpen: false,
+                    leftIcon: const Icon(
+                      Icons.insights_rounded,
+                      color: Colors.white,
+                    ),
+                    headerBackgroundColor: Colors.black,
+                    headerBackgroundColorOpened: Colors.blueAccent,
+                    header: Text("Meal Questions", style: _headerStyle),
+                    contentHorizontalPadding: 20,
+                    contentBorderWidth: 1,
+                    content: Accordion(
+                      maxOpenSections: 1,
+                      headerBackgroundColorOpened: Colors.blueGrey,
+                      headerPadding: const EdgeInsets.symmetric(
+                          vertical: 7, horizontal: 15),
+                      children: List.generate(
+                        mealsQuestions.length,
+                        (index) {
+                          return AccordionSection(
+                              isOpen: false,
+                              leftIcon: const Icon(Icons.insights_rounded,
+                                  color: Colors.white),
+                              headerBackgroundColor: Colors.black38,
+                              headerBackgroundColorOpened: Colors.black54,
+                              header: Text(mealsQuestions[index]["question"],
+                                  style: _headerStyle),
+                              content: Text(mealsQuestions[index]["answer"],
+                                  style: _contentStyle));
+                        },
+                      ),
+                    ),
+                  ),
+                  AccordionSection(
+                    isOpen: false,
+                    leftIcon: const Icon(
+                      Icons.insights_rounded,
+                      color: Colors.white,
+                    ),
+                    headerBackgroundColor: Colors.black,
+                    headerBackgroundColorOpened: Colors.blueAccent,
+                    header: Text("Speaker Questions", style: _headerStyle),
+                    contentHorizontalPadding: 20,
+                    contentBorderWidth: 1,
+                    content: Accordion(
+                      maxOpenSections: 1,
+                      headerBackgroundColorOpened: Colors.blueGrey,
+                      headerPadding: const EdgeInsets.symmetric(
+                          vertical: 7, horizontal: 15),
+                      children: List.generate(
+                        speakersQuestions.length,
+                        (index) {
+                          return AccordionSection(
+                              isOpen: false,
+                              leftIcon: const Icon(Icons.insights_rounded,
+                                  color: Colors.white),
+                              headerBackgroundColor: Colors.black38,
+                              headerBackgroundColorOpened: Colors.black54,
+                              header: Text(speakersQuestions[index]["question"],
+                                  style: _headerStyle),
+                              content: Text(speakersQuestions[index]["answer"],
+                                  style: _contentStyle));
+                        },
+                      ),
+                    ),
+                  ),
+                  AccordionSection(
+                    isOpen: false,
+                    leftIcon: const Icon(
+                      Icons.insights_rounded,
+                      color: Colors.white,
+                    ),
+                    headerBackgroundColor: Colors.black,
+                    headerBackgroundColorOpened: Colors.blueAccent,
+                    header: Text("Poster Questions", style: _headerStyle),
+                    contentHorizontalPadding: 20,
+                    contentBorderWidth: 1,
+                    content: Accordion(
+                      maxOpenSections: 1,
+                      headerBackgroundColorOpened: Colors.blueGrey,
+                      headerPadding: const EdgeInsets.symmetric(
+                          vertical: 7, horizontal: 15),
+                      children: List.generate(
+                        postersQuestions.length,
+                        (index) {
+                          return AccordionSection(
+                              isOpen: false,
+                              leftIcon: const Icon(Icons.insights_rounded,
+                                  color: Colors.white),
+                              headerBackgroundColor: Colors.black38,
+                              headerBackgroundColorOpened: Colors.black54,
+                              header: Text(postersQuestions[index]["question"],
+                                  style: _headerStyle),
+                              content: Text(postersQuestions[index]["answer"],
+                                  style: _contentStyle));
+                        },
+                      ),
+                    ),
+                  ),
+                  AccordionSection(
+                    isOpen: false,
+                    leftIcon: const Icon(
+                      Icons.insights_rounded,
+                      color: Colors.white,
+                    ),
+                    headerBackgroundColor: Colors.black,
+                    headerBackgroundColorOpened: Colors.blueAccent,
+                    header: Text("Account Privacy and Deletion", style: _headerStyle),
                     contentHorizontalPadding: 20,
                     contentBorderWidth: 1,
                     content: Accordion(
@@ -109,9 +375,17 @@ class ConferenceInfo extends ConsumerWidget {
                             headerBackgroundColorOpened: Colors.black54,
                             header: Text("How can I delete my account?",
                                 style: _headerStyle),
-                            content: Text(
-                                "To delete your account, please email your request to matthew.pullen@gmail.com. Your account, along with messages sent/received, will be deleted within 48 hours and you will receive a confirmation email once this is completed.",
-                                style: _contentStyle),
+                            content: Column(
+                              children: [
+                                Text(
+                                    "To delete your account, please email your request to matthew.pullen@gmail.com. Your account, along with messages sent/received, will be deleted within 48 hours and you will receive a confirmation email once this is completed.",
+                                    style: _contentStyle),
+                                const SizedBox(height: 10),
+                                ElevatedButton(
+                                  onPressed: _showAlertDialog, 
+                                  child: const Text("DELETE ACCOUNT"))
+                              ],
+                            ),
                             contentHorizontalPadding: 20,
                             contentBorderWidth: 1),
                         AccordionSection(
@@ -325,206 +599,6 @@ This Terms and Conditions page was generated by App Privacy Policy Generator''',
                           ]),
                         )
                       ],
-                    ),
-                  ),
-                  AccordionSection(
-                    isOpen: false,
-                    leftIcon: const Icon(
-                      Icons.insights_rounded,
-                      color: Colors.white,
-                    ),
-                    headerBackgroundColor: Colors.black,
-                    headerBackgroundColorOpened: Colors.blueAccent,
-                    header: Text("Travel Questions", style: _headerStyle),
-                    contentHorizontalPadding: 20,
-                    contentBorderWidth: 1,
-                    content: Accordion(
-                      maxOpenSections: 1,
-                      headerBackgroundColorOpened: Colors.blueGrey,
-                      headerPadding: const EdgeInsets.symmetric(
-                          vertical: 7, horizontal: 15),
-                      children: List.generate(
-                        travelQuestions.length,
-                        (index) {
-                          return AccordionSection(
-                              isOpen: false,
-                              leftIcon: const Icon(Icons.insights_rounded,
-                                  color: Colors.white),
-                              headerBackgroundColor: Colors.black38,
-                              headerBackgroundColorOpened: Colors.black54,
-                              header: Text(travelQuestions[index]["question"],
-                                  style: _headerStyle),
-                              content: Text(travelQuestions[index]["answer"],
-                                  style: _contentStyle));
-                        },
-                      ),
-                    ),
-                  ),
-                  AccordionSection(
-                    isOpen: false,
-                    leftIcon: const Icon(
-                      Icons.insights_rounded,
-                      color: Colors.white,
-                    ),
-                    headerBackgroundColor: Colors.black,
-                    headerBackgroundColorOpened: Colors.blueAccent,
-                    header: Text("Conference Questions", style: _headerStyle),
-                    contentHorizontalPadding: 20,
-                    contentBorderWidth: 1,
-                    content: Accordion(
-                      maxOpenSections: 1,
-                      headerBackgroundColorOpened: Colors.blueGrey,
-                      headerPadding: const EdgeInsets.symmetric(
-                          vertical: 7, horizontal: 15),
-                      children: List.generate(
-                        conferenceQuestions.length,
-                        (index) {
-                          return AccordionSection(
-                              isOpen: false,
-                              leftIcon: const Icon(Icons.insights_rounded,
-                                  color: Colors.white),
-                              headerBackgroundColor: Colors.black38,
-                              headerBackgroundColorOpened: Colors.black54,
-                              header: Text(
-                                  conferenceQuestions[index]["question"],
-                                  style: _headerStyle),
-                              content: Text(
-                                  conferenceQuestions[index]["answer"],
-                                  style: _contentStyle));
-                        },
-                      ),
-                    ),
-                  ),
-                  AccordionSection(
-                    isOpen: false,
-                    leftIcon: const Icon(
-                      Icons.insights_rounded,
-                      color: Colors.white,
-                    ),
-                    headerBackgroundColor: Colors.black,
-                    headerBackgroundColorOpened: Colors.blueAccent,
-                    header: Text("Venue Questions", style: _headerStyle),
-                    contentHorizontalPadding: 20,
-                    contentBorderWidth: 1,
-                    content: Accordion(
-                      maxOpenSections: 1,
-                      headerBackgroundColorOpened: Colors.blueGrey,
-                      headerPadding: const EdgeInsets.symmetric(
-                          vertical: 7, horizontal: 15),
-                      children: List.generate(
-                        venueQuestions.length,
-                        (index) {
-                          return AccordionSection(
-                              isOpen: false,
-                              leftIcon: const Icon(Icons.insights_rounded,
-                                  color: Colors.white),
-                              headerBackgroundColor: Colors.black38,
-                              headerBackgroundColorOpened: Colors.black54,
-                              header: Text(venueQuestions[index]["question"],
-                                  style: _headerStyle),
-                              content: Text(venueQuestions[index]["answer"],
-                                  style: _contentStyle));
-                        },
-                      ),
-                    ),
-                  ),
-                  AccordionSection(
-                    isOpen: false,
-                    leftIcon: const Icon(
-                      Icons.insights_rounded,
-                      color: Colors.white,
-                    ),
-                    headerBackgroundColor: Colors.black,
-                    headerBackgroundColorOpened: Colors.blueAccent,
-                    header: Text("Meals Questions", style: _headerStyle),
-                    contentHorizontalPadding: 20,
-                    contentBorderWidth: 1,
-                    content: Accordion(
-                      maxOpenSections: 1,
-                      headerBackgroundColorOpened: Colors.blueGrey,
-                      headerPadding: const EdgeInsets.symmetric(
-                          vertical: 7, horizontal: 15),
-                      children: List.generate(
-                        mealsQuestions.length,
-                        (index) {
-                          return AccordionSection(
-                              isOpen: false,
-                              leftIcon: const Icon(Icons.insights_rounded,
-                                  color: Colors.white),
-                              headerBackgroundColor: Colors.black38,
-                              headerBackgroundColorOpened: Colors.black54,
-                              header: Text(mealsQuestions[index]["question"],
-                                  style: _headerStyle),
-                              content: Text(mealsQuestions[index]["answer"],
-                                  style: _contentStyle));
-                        },
-                      ),
-                    ),
-                  ),
-                  AccordionSection(
-                    isOpen: false,
-                    leftIcon: const Icon(
-                      Icons.insights_rounded,
-                      color: Colors.white,
-                    ),
-                    headerBackgroundColor: Colors.black,
-                    headerBackgroundColorOpened: Colors.blueAccent,
-                    header: Text("Speakers Questions", style: _headerStyle),
-                    contentHorizontalPadding: 20,
-                    contentBorderWidth: 1,
-                    content: Accordion(
-                      maxOpenSections: 1,
-                      headerBackgroundColorOpened: Colors.blueGrey,
-                      headerPadding: const EdgeInsets.symmetric(
-                          vertical: 7, horizontal: 15),
-                      children: List.generate(
-                        speakersQuestions.length,
-                        (index) {
-                          return AccordionSection(
-                              isOpen: false,
-                              leftIcon: const Icon(Icons.insights_rounded,
-                                  color: Colors.white),
-                              headerBackgroundColor: Colors.black38,
-                              headerBackgroundColorOpened: Colors.black54,
-                              header: Text(speakersQuestions[index]["question"],
-                                  style: _headerStyle),
-                              content: Text(speakersQuestions[index]["answer"],
-                                  style: _contentStyle));
-                        },
-                      ),
-                    ),
-                  ),
-                  AccordionSection(
-                    isOpen: false,
-                    leftIcon: const Icon(
-                      Icons.insights_rounded,
-                      color: Colors.white,
-                    ),
-                    headerBackgroundColor: Colors.black,
-                    headerBackgroundColorOpened: Colors.blueAccent,
-                    header: Text("Posters Questions", style: _headerStyle),
-                    contentHorizontalPadding: 20,
-                    contentBorderWidth: 1,
-                    content: Accordion(
-                      maxOpenSections: 1,
-                      headerBackgroundColorOpened: Colors.blueGrey,
-                      headerPadding: const EdgeInsets.symmetric(
-                          vertical: 7, horizontal: 15),
-                      children: List.generate(
-                        postersQuestions.length,
-                        (index) {
-                          return AccordionSection(
-                              isOpen: false,
-                              leftIcon: const Icon(Icons.insights_rounded,
-                                  color: Colors.white),
-                              headerBackgroundColor: Colors.black38,
-                              headerBackgroundColorOpened: Colors.black54,
-                              header: Text(postersQuestions[index]["question"],
-                                  style: _headerStyle),
-                              content: Text(postersQuestions[index]["answer"],
-                                  style: _contentStyle));
-                        },
-                      ),
                     ),
                   ),
                 ],

@@ -56,7 +56,7 @@ class PresentersPage extends ConsumerWidget {
               List<Map<String, dynamic>> presentationList = [];
               for (var i = 0; i < presenters.length; i++) {
                 var item = presenters[i].toMap();
-                if (item["firstName"] == "TBD") {
+                if (item["firstName"] == "TBD" || item["lastName"] == "") {
                   continue;
                 }
                 presentationList.add(item);

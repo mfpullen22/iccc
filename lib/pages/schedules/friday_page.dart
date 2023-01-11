@@ -10,98 +10,97 @@ class FridayPage extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> schedTrack1 = [];
     List<Map<String, dynamic>> schedTrack2 = [];
+    List<Map<String, dynamic>> optionalSchedule = [];
+    List<Map<String, dynamic>> closingSchedule = [];
 
     for (var i = 0; i < schedule.length; i++) {
       if (schedule[i]["track"] == 1) {
         schedTrack1.add(schedule[i]);
-      } else {
+      } 
+      if (schedule[i]["track"] == 2) {
         schedTrack2.add(schedule[i]);
+      }
+      if (schedule[i]["track"] == 3) {
+        optionalSchedule.add(schedule[i]);
+      }
+      if (schedule[i]["track"] == 4) {
+        closingSchedule.add(schedule[i]);
       }
     }
 
     schedTrack1.sort((a, b) => a['time'].compareTo(b['time']));
     schedTrack2.sort((a, b) => a['time'].compareTo(b['time']));
+    optionalSchedule.sort((a, b) => a['time'].compareTo(b['time']));
+    closingSchedule.sort((a, b) => a['time'].compareTo(b['time']));
 
     return ListView(
       padding: const EdgeInsets.all(10),
       children: [
-        Text("Basic Science Track:",
+        Text("Basic Science - Antifungal Drugs and Resistance",
             textAlign: TextAlign.center,
             style:
                 GoogleFonts.raleway(fontSize: 20, fontWeight: FontWeight.bold)),
-        Text("Antifungal Drugs and Resistance",
+        Text("Location: Albert Hall",
             textAlign: TextAlign.center,
             style:
-                GoogleFonts.raleway(fontSize: 20, fontWeight: FontWeight.bold)),
+                GoogleFonts.raleway(fontSize: 16, fontWeight: FontWeight.bold)),
+        Text("Moderator: Asiya Gusa",
+            textAlign: TextAlign.center,
+            style:
+                GoogleFonts.raleway(fontSize: 16)),
         Container(
           color: const Color.fromRGBO(117, 16, 62, 1),
           child: Column(
-            children: [
-              ScheduleCard(scheduleItem: schedTrack1[0]),
-              ScheduleCard(scheduleItem: schedTrack1[1]),
-              ScheduleCard(scheduleItem: schedTrack1[2]),
-              const ScheduleCard(scheduleItem: {
-                "firstName": "Break",
-                "lastName": "",
-                "degree": "",
-                "title": "",
-                "time": 1000
-              }),
-              ScheduleCard(scheduleItem: schedTrack1[3]),
-              ScheduleCard(scheduleItem: schedTrack1[4]),
+            children: <Widget> [     
+            for(var item in schedTrack1) ScheduleCard(scheduleItem: item),
             ],
           ),
         ),
         const SizedBox(height: 10),
-        Text("Clinical Science Track:",
+        Text("Clinical Science - Immunology and Pathogenesis",
             textAlign: TextAlign.center,
             style:
                 GoogleFonts.raleway(fontSize: 20, fontWeight: FontWeight.bold)),
-        Text("Immunology and Pathogenesis",
+        Text("Location: Victoria Ballroom",
             textAlign: TextAlign.center,
             style:
                 GoogleFonts.raleway(fontSize: 20, fontWeight: FontWeight.bold)),
+        Text("Moderator: Michal Olszewski",
+            textAlign: TextAlign.center,
+            style:
+                GoogleFonts.raleway(fontSize: 16)),
         Container(
           color: const Color.fromRGBO(0, 192, 225, 1),
           child: Column(
-            children: [
-              ScheduleCard(scheduleItem: schedTrack2[0]),
-              ScheduleCard(scheduleItem: schedTrack2[1]),
-              ScheduleCard(scheduleItem: schedTrack2[2]),
-              const ScheduleCard(scheduleItem: {
-                "firstName": "Break",
-                "lastName": "",
-                "degree": "",
-                "title": "",
-                "time": 1000
-              }),
-              ScheduleCard(scheduleItem: schedTrack2[3]),
-              ScheduleCard(scheduleItem: schedTrack2[4]),
-              ScheduleCard(scheduleItem: schedTrack2[5]),
+            children: <Widget> [     
+            for(var item in schedTrack2) ScheduleCard(scheduleItem: item),
             ],
           ),
         ),
         const SizedBox(height: 10),
-        Text("--Lunch  12:00 - 14:00--",
+        Container(
+          color: const Color.fromRGBO(117, 16, 62, 1),
+          child: Column(
+            children: <Widget> [     
+            for(var item in closingSchedule) ScheduleCard(scheduleItem: item),
+            ],
+          ),
+        ),
+        const SizedBox(height: 10),
+        Text("-Lunch: Stables Restaurant-",
+            textAlign: TextAlign.center,
+            style:
+                GoogleFonts.raleway(fontSize: 20, fontWeight: FontWeight.bold)),
+        Text("12:00 - 14:00",
             textAlign: TextAlign.center,
             style:
                 GoogleFonts.raleway(fontSize: 20, fontWeight: FontWeight.bold)),
         const SizedBox(height: 10),
         Container(
-          color: const Color.fromRGBO(117, 16, 62, 1),
+          color: const Color.fromRGBO(0, 192, 225, 1),
           child: Column(
-            children: [
-              Card(
-                elevation: 10,
-                child: ListTile(
-                  title: Text("Optional Networking Session",
-                      style: GoogleFonts.raleway(fontWeight: FontWeight.bold)),
-                  leading: Text("13:00 - 14:00",
-                      style: GoogleFonts.raleway(fontWeight: FontWeight.bold)),
-                  subtitle: Text("Scientific Committee Meeting",
-                      style: GoogleFonts.raleway(fontSize: 14)),
-                ),
-              )
+            children: <Widget> [     
+            for(var item in optionalSchedule) ScheduleCard(scheduleItem: item),
             ],
           ),
         ),

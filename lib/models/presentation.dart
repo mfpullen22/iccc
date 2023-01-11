@@ -13,6 +13,7 @@ class Presentation {
   int track;
   String oral;
   String abs;
+  String skip;
 
   Presentation(
       {required this.firstName,
@@ -26,7 +27,8 @@ class Presentation {
       required this.title,
       required this.track,
       required this.oral,
-      required this.abs});
+      required this.abs,
+      required this.skip});
 
   Presentation.fromMap(Map<String, dynamic> map)
       : firstName = map['firstName'] ?? "",
@@ -40,7 +42,8 @@ class Presentation {
         title = map['title'] ?? "",
         track = map["track"] ?? 0,
         oral = map["oral"] ?? "",
-        abs = map["abs"] ?? "";
+        abs = map["abs"] ?? "",
+        skip = map["skip"] ?? "";
 
   Map<String, dynamic> toMap() {
     return {
@@ -56,6 +59,7 @@ class Presentation {
       "email": email,
       "oral": oral,
       "abs": abs,
+      "skip": skip,
     };
   }
 }
